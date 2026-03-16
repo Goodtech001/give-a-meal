@@ -1,38 +1,37 @@
-
-import { usePathname, useRouter } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 export type menu_type = {
-  title: string
-  path?: string
-  subPath?: string
-  external?: boolean
+  title: string;
+  path?: string;
+  subPath?: string;
+  external?: boolean;
   subMenus?: {
-    title: string
-    path: string
-    description?: string
-    external?: boolean
-  }[]
-}
+    title: string;
+    path: string;
+    description?: string;
+    external?: boolean;
+  }[];
+};
 
 export const leftMenu: menu_type[] = [
   {
-    title: 'Make Impact',
-    path: '/',
+    title: "Make Impact",
+    path: "/",
   },
   {
-    title: 'Monthly Giving',
-    path: '/',
+    title: "Monthly Giving",
+    path: "/",
   },
-   {
-    title: 'Partner With Us',
-    path: '/',
+  {
+    title: "Partner With Us",
+    path: "/partner-with-us",
   },
-   {
-    title: 'Who We Are',
-    path: '/',
+  {
+    title: "Who We Are",
+    path: "/",
   },
-]
+];
 
 // export const rightMenu: menu_type[] = [
 //   {
@@ -45,7 +44,7 @@ export const leftMenu: menu_type[] = [
 
 //         description:
 //           'Feed an indigent in africa, Sponsor school meals for children in malawi, Sponsor family food parcels',
-          
+
 //       },
 //       {
 //         title: 'Education Campaigns',
@@ -67,58 +66,61 @@ export const leftMenu: menu_type[] = [
 // ]
 
 export default function useTopnavbar() {
-  const navListRef = useRef<HTMLUListElement>(null)
-  const [subMenuClicked, setSubMenuClicked] = useState<string>('')
-  const [navOpen, setNavOpen] = useState(false)
+  const navListRef = useRef<HTMLUListElement>(null);
+  const [subMenuClicked, setSubMenuClicked] = useState<string>("");
+  const [navOpen, setNavOpen] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [_activeMenu, setActiveMenu] = useState<menu_type | null>(null)
-  const pathName = usePathname()
-  const router = useRouter()
+  const [_activeMenu, setActiveMenu] = useState<menu_type | null>(null);
+  const pathName = usePathname();
+  const router = useRouter();
 
   const getActiveUrl = (path: string, subPath?: string): boolean => {
     // Check if the main path matches
     if (pathName === path) {
-      return true
+      return true;
     }
     // Check if the subPath exists and matches
     if (subPath && pathName.startsWith(subPath)) {
-      return true
+      return true;
     }
-    return false
-  }
+    return false;
+  };
 
   const handleSubMenuClick = (path: string) => {
-    router.push(path)
-    setSubMenuClicked(path)
-  }
+    router.push(path);
+    setSubMenuClicked(path);
+  };
 
   useEffect(() => {
     const activeMenuObj = [...leftMenu].find(
       (menu) =>
-        getActiveUrl(menu.path || '', menu.subPath) ||
-        (menu.subMenus && menu.subMenus.some((subMenu) => getActiveUrl(subMenu.path))),
-    )
-    setActiveMenu(activeMenuObj || null)
+        getActiveUrl(menu.path || "", menu.subPath) ||
+        (menu.subMenus &&
+          menu.subMenus.some((subMenu) => getActiveUrl(subMenu.path))),
+    );
+    setActiveMenu(activeMenuObj || null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathName])
+  }, [pathName]);
 
   useEffect(() => {
-    const navList = navListRef.current
+    const navList = navListRef.current;
     if (navList) {
       const handleClick = (e: MouseEvent) => {
         // Check if the target is a link tag and then toggle the nav open and close
         if (e.target instanceof HTMLElement) {
           // This line checks if the target is an <a> tag with a non-empty href attribute and toggles the nav state
           // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-          e.target.tagName === 'A' && e.target.attributes.getNamedItem('href')?.value !== '' && setNavOpen((p) => !p)
+          e.target.tagName === "A" &&
+            e.target.attributes.getNamedItem("href")?.value !== "" &&
+            setNavOpen((p) => !p);
         }
-      }
-      navList.addEventListener('click', (e) => handleClick(e))
+      };
+      navList.addEventListener("click", (e) => handleClick(e));
       return () => {
-        navList.removeEventListener('click', handleClick)
-      }
+        navList.removeEventListener("click", handleClick);
+      };
     }
-  }, [])
+  }, []);
 
   return {
     setNavOpen,
@@ -129,5 +131,5 @@ export default function useTopnavbar() {
     pathName,
     navListRef,
     handleSubMenuClick,
-  }
+  };
 }
