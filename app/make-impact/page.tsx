@@ -1,10 +1,11 @@
 import TopNavBar from "@/layout/Topnavbar";
-import React from "react";
+import PickaCause from "@/section/make-impact/pick-a -cause";
 
-export default function PartnerWithUs() {
+export default function MakeImpact() {
   return (
     <div className="bg-white">
       <TopNavBar />
+      <PickaCause />
     </div>
   );
 }

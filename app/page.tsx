@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import TestimonialCard from "@/components/testimonial";
 import Cards from "@/layout/cards";
 import GivingCard from "@/layout/giving-card";
@@ -11,13 +11,13 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="bg-white">
-     <TopNavBar/>
-     <HeroSection/>
-     <Mission/>
-     <Cards />
-     <Impact/>
-     {/* <GivingCard/> */}
-     <TestimonialCard />
+      <TopNavBar />
+      <HeroSection />
+      <Mission />
+      <Cards />
+      <Impact />
+      {/* <GivingCard/> */}
+      <TestimonialCard />
     </div>
   );
 }
