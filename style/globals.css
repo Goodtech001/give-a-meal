@@ -1,0 +1,140 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.font {
+  font-family: "Sen";
+}
+.wrapper,
+.container {
+  width: 98%;
+  max-width: 1250px;
+  margin: auto;
+  height: 100%;
+  padding-inline: 0.4rem;
+}
+
+/* globals.css */
+
+/* Base button styles */
+.btn {
+  border: none;
+  border-radius: 20px; /* Adjust as needed */
+  padding: 1rem 1rem; /* Adjust as needed */
+  /* font-weight: ; */
+  color: white; /* Text color */
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Specific styles for each button */
+.btn-primary {
+  background-color: #0D7FC1; /* Primary button color */
+}
+
+.btn-secondary {
+  background-color: #FF8F07; /* Secondary button color */
+}
+
+/* Swelling animation */
+.btn:hover {
+  transform: scale(1.1); /* Swell on hover */
+}
+
+/* globals.css */
+
+/* Card container */
+.card-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    gap: 3rem; /* Space between cards */
+    padding: 1rem; /* Padding around the container */
+}
+.btnn {
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.btnn:hover {
+  transform: scale(1.1); /* Swell on hover */
+}
+
+
+/* Card styles */
+.card {
+    position: relative;
+    min-width: 300px; /* Minimum width for responsiveness */
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    overflow: hidden; /* Ensure children don’t overflow */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for cards */
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Image styles */
+.card-image {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    filter: brightness(0.5); /* Dim the image */
+}
+
+/* Button styles */
+.card-button {
+    background-color: #0D7FC1; /* Button color */
+    color: white; /* Text color */
+    padding: 0.5rem 1rem; /* Padding */
+    border-radius: 0.5rem; /* Rounded corners */
+    text-align: center; /* Center text */
+    position: absolute; /* Position it at the bottom */
+    bottom: 0; /* Align to bottom */
+    right: 0; /* Align to right */
+    transition: background-color 0.3s ease; /* Smooth background change */
+}
+
+/* Button hover effect */
+.card-button:hover {
+    background-color: #0a5b7c; /* Darken on hover */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column; /* Stack cards vertically */
+        overflow-y: auto; /* Enable vertical scrolling */
+        gap: 1rem; /* Reduce gap */
+    }
+
+    .card {
+        min-width: 80%; /* Full width on mobile */
+    }
+}
