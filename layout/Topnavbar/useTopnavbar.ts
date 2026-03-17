@@ -17,7 +17,7 @@ export type menu_type = {
 export const leftMenu: menu_type[] = [
   {
     title: "Make Impact",
-    path: "/",
+    path: "/impact",
   },
   {
     title: "Monthly Giving",

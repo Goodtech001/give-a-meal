@@ -125,6 +125,20 @@ body {
 .card-button:hover {
     background-color: #0a5b7c; /* Darken on hover */
 }
+.bg-impact {
+  background-image: url("/assets/icons/Group.png");
+  /* background-size: cover; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  justify-content: center;
+  display: flex;
+}
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* Responsive styles */
 @media (max-width: 768px) {
