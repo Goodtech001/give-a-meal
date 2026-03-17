@@ -35,7 +35,7 @@ const partnerslide = [
 
 export default function OurPartners() {
   return (
-    <div className="pt-16">
+    <div className="pt-16 relative">
       <h1 className="text-[#00304C] text-4xl text-center flex justify-center font">
         Our Partners
       </h1>
@@ -54,6 +54,7 @@ export default function OurPartners() {
           ))}
         </div>
       </div>
+      <div className="absolute -top-10 right-10 w-40 h-40 bg-blue-400 rounded-full blur-2xl opacity-10"></div>
     </div>
   );
 }

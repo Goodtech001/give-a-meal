@@ -1,7 +1,7 @@
 import Title from "@/components/card-title";
 import OngoingCard from "@/components/ongoing";
 import Cards from "@/layout/cards";
-import Footer from "@/layout/footer";
+
 import ImpactHero from "@/layout/impact-hero";
 import Subscribe from "@/layout/subscribe";
 import TopNavBar from "@/layout/Topnavbar";
@@ -44,7 +44,6 @@ function page() {
       <Cards data={cardData} numCards={3} />
       <OngoingCard />
       <Subscribe />
-      <Footer />
     </div>
   );
 }
