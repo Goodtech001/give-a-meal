@@ -5,51 +5,53 @@ import Image from "next/image";
 
 export default function GiveAMealAdvantage() {
   return (
-    <div className="pt-10">
+    <div className="pt-10 relative">
       <h1 className="text-[#00304C] text-4xl flex justify-center font">
         The Give A Meal Advantage
       </h1>
-      <div className="flex justify-center items-center flex-wrap gap-10 md:gap-20 py-10 px-4">
+      <div className="flex justify-center items-center flex-wrap gap-10 md:gap-20 pt-14 pb-10 px-4">
         {/* Transparency */}
-        <div className="flex justify-center items-center flex-col text-center max-w-xs">
-          <div className="relative w-40 h-40">
+        <div className="flex justify-center items-center flex-col text-center max-w-sm">
+          <div className="">
             <Image
               src={TransparencyImg}
               alt="transparency"
-              fill
-              className="object-cover rounded-full"
+              width={150}
+              height={150}
+              className="object-cover "
             />
           </div>
-          <h1 className="text-[#00304C] text-xl font-semibold mt-4">
+          <h1 className="text-[#00304C] text-xl font-semibold mt-5">
             Maximum Transparency
           </h1>
-          <p className="text-[#00304C] mt-2 text-lg leading-relaxed">
+          <p className="text-[#00304C] mt-5 text-lg leading-relaxed">
             We provide clear, verifiable data on every dollar spent, ensuring
             your organization’s contribution is fully accounted for.
           </p>
         </div>
 
         {/* Global Reach */}
-        <div className="flex justify-center items-center flex-col text-center max-w-xs">
-          <div className="relative w-40 h-40">
+        <div className="flex justify-center items-center flex-col text-center max-w-sm">
+          <div className="">
             <Image
               src={GlobalReachImg}
               alt="global reach"
-              fill
-              className="object-contain rounded-full"
+              width={150}
+              height={150}
+              className="object-contain "
             />
           </div>
-          <h1 className="text-[#00304C] text-xl font-semibold mt-4">
+          <h1 className="text-[#00304C] text-xl font-semibold mt-5">
             Global Reach
           </h1>
-          <p className="text-[#00304C] mt-2 text-lg leading-relaxed">
+          <p className="text-[#00304C] mt-5 text-lg leading-relaxed">
             Leveraging the network of the UN World Food Programme, we deliver
             aid to the world’s most vulnerable and hard-to-reach regions.
           </p>
         </div>
       </div>
       <div className="flex justify-center items-center pt-5">
-        <div className="flex justify-center items-center flex-col text-center max-w-xs">
+        <div className="flex justify-center items-center flex-col text-center max-w-sm">
           <div className="">
             <Image
               src={RealLifeImpactImg}
@@ -59,15 +61,16 @@ export default function GiveAMealAdvantage() {
               className="object-contain "
             />
           </div>
-          <h1 className="text-[#00304C] text-xl font-semibold mt-4">
+          <h1 className="text-[#00304C] text-xl font-semibold mt-5">
             Real-Time Impact
           </h1>
-          <p className="text-[#00304C] mt-2 text-lg leading-relaxed">
+          <p className="text-[#00304C] mt-5 text-lg leading-relaxed">
             See the results of our collaboration as they happen, with live
             updates and data-driven storytelling.
           </p>
         </div>
       </div>
+      <div className="absolute bottom-20 left-30 w-40 h-40 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
     </div>
   );
 }
