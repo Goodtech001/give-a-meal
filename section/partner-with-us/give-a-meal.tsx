@@ -70,7 +70,7 @@ export default function GiveAMealAdvantage() {
           </p>
         </div>
       </div>
-      <div className="absolute bottom-20 left-30 w-40 h-40 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute bottom-25 -left-0 w-40 h-40 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
     </div>
   );
 }
