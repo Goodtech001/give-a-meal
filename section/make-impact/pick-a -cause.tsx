@@ -29,7 +29,7 @@ export default function PickaCause() {
         transition={transitionSpring}
       >
         <div>
-          <div className="relative w-full h-[350px] mt-20 overflow-hidden rounded-xl">
+          <div className="relative w-full h-[350px] mt-10 overflow-hidden rounded-xl">
             {/* 1. The Image Background */}
             <Image
               src={groupHand}

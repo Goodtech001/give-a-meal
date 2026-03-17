@@ -2,6 +2,7 @@ import DonateCard from "@/components/DonateCard";
 import DonateImg1 from "@/public/assets/images/7039bff9e79267b190fbc0db2afd3294c28b1ba4.jpg";
 import DonateImg2 from "@/public/assets/images/7039bff9e79267b190fbc0db2afd3294c28b1ba4.jpg";
 import DonateImg3 from "@/public/assets/images/7039bff9e79267b190fbc0db2afd3294c28b1ba4.jpg";
+import { Icon } from "@iconify/react";
 
 const cardData = [
   {
@@ -35,16 +36,26 @@ const cardData = [
 
 export default function SpotLightCauses() {
   return (
-    <div>
-      <div>
+    <div className="pt-10">
+      <div className="flex flex-col justify-center items-center space-y-5">
         {" "}
-        <div>
-          <h1>SpotLight courses</h1>
+        <div className="flex items-center gap-3">
+          <Icon
+            icon="mdi:alarm-light-outline"
+            className="font-bold text-[#00304C] "
+            fontSize={30}
+          />
+          <h1 className="text-[#00304C] text-4xl font-bold">
+            SpotLight courses
+          </h1>
         </div>
-        <p>critsfdhfkkj</p>
+        <p className="text-lg md:text-xl text-[#00304CCC]">
+          Critical needs that require your immediate action to save lives today
+        </p>
       </div>
       {/* card */}
-      <div className="md:flex fl gap-5 items-center justify-center mt-25 relative card-container">
+
+      <div className="md:flex fl gap-5 items-center justify-center mt-5 relative card-container">
         {cardData.map((card, index) => (
           <DonateCard key={index} card={card} />
         ))}
