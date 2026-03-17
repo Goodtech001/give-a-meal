@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import TestimonialCard from "@/components/testimonial";
 import Cards from "@/layout/cards";
 import Footer from "@/layout/footer";
