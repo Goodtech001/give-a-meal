@@ -1,7 +1,4 @@
 "use client";
-import groupHand from "@/public/assets/images/group.png";
-import Image from "next/image";
-import rectangle from "@/public/assets/images/Rectangle 4.jpeg";
 import {
   AnimatePresence,
   circInOut,
@@ -10,8 +7,11 @@ import {
   useInView,
 } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
+import groupHand from "@/public/assets/images/Group.png";
+import rectangle from "@/public/assets/images/Rectangle 4.jpeg";
 
-export default function PickaCause() {
+export default function PartnerWithUsHeroSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const transitionSpring = {
@@ -29,7 +29,7 @@ export default function PickaCause() {
         transition={transitionSpring}
       >
         <div>
-          <div className="relative w-full h-[350px] mt-10 overflow-hidden rounded-xl">
+          <div className="relative w-full h-[350px] mt-10 overflow-hidden rounded-xl mb-5">
             {/* 1. The Image Background */}
             <Image
               src={groupHand}
@@ -40,14 +40,13 @@ export default function PickaCause() {
             />
 
             {/* 3. The Text Content Centered on top */}
-            <div className="absolute inset-0 flex flex-col justify-center items-center text-center mb-13 p-4">
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center  p-4">
               <h1 className="text-[#00304C] text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-                Pick A Cause. Feed A Life
+                Uniting for Real Change
               </h1>
 
               <p className="max-w-lg pt-5  text-lg md:text-xl text-[#00304CCC]">
-                Choose a cause that moves you, and we will ensure every meal
-                reaches those in need.
+                When we join forces, our reach has no limits.
               </p>
             </div>
           </div>
