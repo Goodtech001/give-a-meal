@@ -27,7 +27,7 @@ function ImpactHero() {
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
         transition={transitionSpring}
       >
-        <div className="bg-impact bg-center bg- w-full mt-20 relative">
+        <div className="bg-impact bg-center bg- w-full mt-10 relative">
           <div className="absolut top-0 text-center mt-30 space-y-4 mb-25">
             <h1 className="font text-6xl font-semibold text-[#00304C]">
               Pick A Cause. Feed A Life
