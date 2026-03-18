@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function GiveAMealAdvantage() {
   return (
-    <div className="pt-10 relative md:px-0 px-1">
+    <div className="pt-10 relative md:px-0 px-1 container mx-auto">
       <h1 className="text-[#00304C] md:text-4xl text-3xl text-center  flex justify-center font-bold">
         The Give A Meal Advantage
       </h1>

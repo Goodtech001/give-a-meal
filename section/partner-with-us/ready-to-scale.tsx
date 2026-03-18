@@ -14,9 +14,9 @@ export default function ReadyToScale() {
         </p>
 
         <button
-          className="btn-secondary md:px-20 md:w-0 w-full py-4 mt-8 rounded-xl text-lg text-white cursor-pointer 
+          className="btn-secondary w-full md:w-auto md:px-20 py-4 mt-8 rounded-xl text-lg text-white cursor-pointer 
              transition-transform transition-colors duration-300 ease-in-out 
-              hover:scale-105"
+             hover:scale-105"
         >
           Contact Us
         </button>
