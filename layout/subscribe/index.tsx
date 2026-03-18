@@ -8,49 +8,76 @@ import { Icon } from "@iconify/react";
 
 function Subscribe() {
   return (
-    <div className="justify-center flex md:flex-row flex-col gap-30 mt-15">
+    <div className="justify-center items-center flex lg:flex-row flex-col  lg:gap-24 mt-15 px-6 w-full">
+      {/* Card 1: App Download */}
+      <div className="relative w-full max-w-[500px]">
+        {/* Fixed height background */}
+        <div className="h-[250px] w-full rounded-xl bg-[#0D7FC1]"></div>
 
-      <div className="relative">
-        <div className="h-57 w-120 rounded-xl bg-[#0D7FC1]"></div>
-
-        <div className="flex border border-gray-200 bg-white shadow-md w-fit rounded-lg absolute top-3 -left-4 ">
-          <div className="space-y-6 px-6 py-9">
-            <h1 className="font text-[#00304C] text-3xl font-semibold">
+        {/* Fixed height content box matching the other side */}
+        <div className="flex border border-gray-200 bg-white shadow-md w-[100%] h-[240px] rounded-lg absolute top-3 -left-2 md:-left-5">
+          <div className="flex-1 p-6 flex flex-col justify-between">
+            <h1 className="font text-[#00304C] text-2xl md:text-3xl font-semibold leading-tight">
               Make Impact <br /> with the Give A <br /> Meal App
             </h1>
 
-            <div className="flex justify-cente gap-2">
-              <button className="cursor-pointer btnn ">
-                <Image src={play} alt="" className="w-25" />
+            <div className="flex gap-2">
+              <button className="cursor-pointer hover:opacity-80 transition-opacity">
+                <Image src={play} alt="Play Store" className="w-24 md:w-24" />
               </button>
-              <button className=" cursor-pointer btnn">
-                <Image src={ios} alt="" className="w-23" />
+              <button className="cursor-pointer hover:opacity-80 transition-opacity">
+                <Image src={ios} alt="App Store" className="w-21 md:w-22" />
               </button>
             </div>
           </div>
-
-          <Image src={hand} alt="" className="w-55 h-55 flex mt-auto" />
+          {/* Hand image pinned to bottom right */}
+          <div className="relative w-34 h-34 md:w-44 md:h-44 mt-auto">
+            <Image
+              src={hand}
+              alt=""
+              fill
+              className="object-contain object-bottom"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="relative ">
-        <div className="h-57 w-120 rounded-xl bg-[#FF8F07]"></div>
+      {/* Card 2: Newsletter */}
+      <div className="relative w-full max-w-[500px] mt-12 lg:mt-0">
+        {/* Fixed height background - identical to Card 1 */}
+        <div className="h-[250px] w-full rounded-xl bg-[#FF8F07]"></div>
 
-        <div className="border p-4 border-gray-200 bg-white shadow-md w-fit rounded-lg absolute top-3 -left-4 ">
-          <div className=" space-x-39  flex items-center ">
-            <h1 className="font text-[#00304C] text-3xl font-semibold">
-              Stay Connected.
-            </h1>
-           <Icon icon="mdi:email-fast" width="54" height="54" className="text-gray-300"/>
+        {/* Fixed height content box - identical to Card 1 */}
+        <div className="border p-6 border-gray-200 bg-white shadow-md w-[100%] h-[240px] rounded-lg absolute top-3 -left-2 md:-left-5 flex flex-col justify-between">
+          <div>
+            <div className="flex items-center justify-between">
+              <h1 className="font text-[#00304C] text-2xl md:text-3xl font-semibold">
+                Stay Connected.
+              </h1>
+              <Icon
+                icon="mdi:email-fast"
+                className="text-gray-300 w-10 h-10 md:w-12 md:h-12"
+              />
+            </div>
+            <p className="font text-[#00304CCC] text-sm mt-2 leading-snug">
+              Be at the front-row seat to the lives you&apos;ve touched. Get the
+              latest from Give A Meal delivered straight to your inbox.
+            </p>
           </div>
-          <p className="font text-[#00304CCC]"> Be at the front-row seat to the lives you&apos;ve <br /> touched. get the latest from Give A Meal <br /> delivered straight to your inbox.</p>
 
-          <div className="py-4 flex gap-2 items-center">
-            <input type="email" placeholder="Enter Your Email" className="w-full h-10 p-4 rounded-md border border-gray-300"/>
-            <Icon icon="hugeicons:arrow-right-01" width="44" height="44"  className="border p-2 rounded-lg bg-[#03324E] text-white btnn"/>
+          <div className="flex gap-2 items-center">
+            <input
+              type="email"
+              placeholder="Enter Your Email"
+              className="flex-1 h-11 px-4 rounded-md border border-gray-300 focus:ring-2 focus:ring-[#03324E] outline-none"
+            />
+            <Icon
+              icon="hugeicons:arrow-right-01"
+              width="44"
+              height="44"
+              className="border p-2 rounded-lg bg-[#03324E] text-white cursor-pointer hover:bg-[#05456b] transition-colors"
+            />
           </div>
-
-          {/* <Image src={hand} alt="" className="w-55 h-55" /> */}
         </div>
       </div>
     </div>

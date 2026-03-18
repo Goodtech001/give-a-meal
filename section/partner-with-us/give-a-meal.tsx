@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function GiveAMealAdvantage() {
   return (
-    <div className="pt-10 relative">
-      <h1 className="text-[#00304C] text-4xl flex justify-center font">
+    <div className="pt-10 relative md:px-0 px-1">
+      <h1 className="text-[#00304C] md:text-4xl text-3xl text-center  flex justify-center font-bold">
         The Give A Meal Advantage
       </h1>
       <div className="flex justify-center items-center flex-wrap gap-10 md:gap-20 pt-14 pb-10 px-4">

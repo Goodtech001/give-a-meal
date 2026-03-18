@@ -13,6 +13,7 @@ export default function PartnerWithUs() {
       <GiveAMealAdvantage />
       <OurPartners />
       <ReadyToScale />
+      <div className="border border-gray-400 mx-5 " />
       <Subscribe />
     </div>
   );
