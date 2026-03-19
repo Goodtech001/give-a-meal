@@ -16,9 +16,10 @@ export type menu_type = {
 
 export const leftMenu: menu_type[] = [
   {
-    title: 'Make Impact',
-    path: '/impact',
+    title: "Make Impact",
+    path: "/impact",
   },
+
   {
     title: "Partner With Us",
     path: "/partner-with-us",
@@ -29,11 +30,11 @@ export const leftMenu: menu_type[] = [
   },
   {
     title: "Reach Out To Us",
-    path: "/",
+    path: "/contact",
   },
   {
     title: "Monthly Giving",
-    path: "/donate",
+    path: "/",
   },
 ];
 
