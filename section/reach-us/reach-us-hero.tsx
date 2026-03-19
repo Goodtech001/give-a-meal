@@ -51,7 +51,7 @@ export default function ReachUsHeroSection() {
             </div>
           </div>
           <div className="absolute top-60 left-30 w-40 h-40 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
-          <div className="absolute bottom-10 right-0 w-40 h-40 bg-blue-400 rounded-full blur-2xl opacity-10"></div>
+          <div className="absolute bottom-20 right-0 w-40 h-40 bg-blue-400 rounded-full blur-2xl opacity-10"></div>
           <Image src={rectangle} alt="alt" />
         </div>
       </motion.div>
