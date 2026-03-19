@@ -7,49 +7,45 @@ export default function ContactDetails() {
       {/* LEFT */}
       <div className="col-span-12 md:col-span-7 relative">
         <div className="md:w-2/3 w-full">
-          <h1 className="text-[#00304C] md:text-4xl text-2xl md:text-start text-center font-bold">
+          <h1 className="text-[#00304C] md:text-4xl text-2xl md:text-start text-center font">
             Have a question or want to make inquires?
           </h1>
         </div>
 
         <div>
           <form className="w-full max-w-96 md:max-w-full mx-auto md:mx-0 space-y-5 pt-8">
-            <label className="text-[#00304C] text-base font-bold">
-              Full name:
-            </label>
+            <label className="text-[#00304C] text-base font">Full name:</label>
             <div className="pt-2.5 w-full">
               <input
                 type="text"
                 placeholder="john doe"
-                className="w-full px-3 py-2.5 text-sm rounded-xl border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                className="w-full px-3 py-2.5 text-sm rounded-xl border font border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
             </div>
 
-            <label className="text-[#00304C] text-base font-bold">
+            <label className="text-[#00304C] text-base font">
               Email Address:
             </label>
             <div className="pt-2.5 w-full">
               <input
                 type="email"
                 placeholder="johndoe@gmail.com"
-                className="w-full px-3 py-2.5 text-sm rounded-xl border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                className="w-full px-3 py-2.5 text-sm rounded-xl border font border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
             </div>
 
-            <label className="text-[#00304C] text-base font-bold">
-              Message:
-            </label>
+            <label className="text-[#00304C] text-base font">Message:</label>
             <div className="pt-2.5 w-full">
               <textarea
                 placeholder="Write your message..."
                 rows={5}
-                className="w-full px-3 py-2.5 text-sm rounded-xl border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                className="w-full px-3 font py-2.5 text-sm rounded-xl border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
             </div>
 
             <button
               type="submit"
-              className="btn-secondary btn w-full mt-6 cursor-pointer"
+              className="btn-secondary btn w-full mt-6 font cursor-pointer"
             >
               <span>Submit</span>
             </button>
@@ -63,25 +59,23 @@ export default function ContactDetails() {
       <div className="col-span-12 md:col-span-5 relative">
         <div className="flex border w-full max-w-96 md:max-w-xl mx-auto md:mx-0 pl-6 pr-16 md:pl-10 md:pr-20 rounded-xl py-5 flex-col space-y-4">
           <div>
-            <h1 className="text-[#00304C] text-xl font-bold">Email</h1>
-            <p className="text-[#00304C] text-lg font-bold pt-1.5 break-words">
+            <h1 className="text-[#00304C] text-xl font">Email</h1>
+            <p className="text-[#00304C] text-lg font pt-1.5 break-words">
               giveamealorg@gmail.com
             </p>
           </div>
 
           <div>
-            <h1 className="text-[#00304C] text-xl font-bold">Phone</h1>
-            <p className="text-[#00304C] text-lg font-bold pt-1.5">
-              000-000-000
-            </p>
+            <h1 className="text-[#00304C] text-xl font">Phone</h1>
+            <p className="text-[#00304C] text-lg font pt-1.5">000-000-000</p>
           </div>
 
           <div>
-            <h1 className="text-[#00304C] text-xl font-bold">Socails</h1>
+            <h1 className="text-[#00304C] text-xl font">Socails</h1>
             <div className="flex gap-5 pt-1.5 flex-wrap">
-              <p className="text-[#00304C] text-lg font-bold">Kingschat</p>
-              <p className="text-[#00304C] text-lg font-bold">Instagram</p>
-              <p className="text-[#00304C] text-lg font-bold">TikTok</p>
+              <p className="text-[#00304C] text-lg font">Kingschat</p>
+              <p className="text-[#00304C] text-lg font">Instagram</p>
+              <p className="text-[#00304C] text-lg font">TikTok</p>
             </div>
           </div>
         </div>

@@ -41,11 +41,11 @@ export default function ReachUsHeroSection() {
 
             {/* 3. The Text Content Centered on top */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center  p-4">
-              <h1 className="text-[#00304C] text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">
+              <h1 className="text-[#00304C] text-4xl font md:text-6xl leading-tight drop-shadow-lg">
                 Reach Us
               </h1>
 
-              <p className="max-w-lg pt-5  text-lg md:text-xl text-[#00304CCC]">
+              <p className="max-w-lg pt-5 font  text-lg md:text-xl text-[#00304CCC]">
                 We would love to hear from you
               </p>
             </div>
