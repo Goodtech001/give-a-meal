@@ -42,11 +42,11 @@ export default function ReachUsHeroSection() {
             {/* 3. The Text Content Centered on top */}
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center  p-4">
               <h1 className="text-[#00304C] text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg">
-                Uniting for Real Change
+                Reach Us
               </h1>
 
               <p className="max-w-lg pt-5  text-lg md:text-xl text-[#00304CCC]">
-                When we join forces, our reach has no limits.
+                We would love to hear from you
               </p>
             </div>
           </div>

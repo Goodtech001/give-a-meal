@@ -33,9 +33,10 @@ const partnerslide = [
 export default function OurPartners() {
   return (
     <div className="pt-16 relative">
-      <h1 className="text-[#00304C] text-4xl text-center flex justify-center font">
+      <h1 className="text-[#00304C] text-4xl text-center flex justify-center font-bold">
         Our Partners
       </h1>
+
       <div>
         <div className="container mx-auto pt-14">
           <div className="grid grid-cols-2 gap-7 md:flex md:overflow-x-scroll no-scrollbar whitespace-nowrap">
