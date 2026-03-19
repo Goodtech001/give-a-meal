@@ -34,7 +34,7 @@ export const leftMenu: menu_type[] = [
   },
   {
     title: "Monthly Giving",
-    path: "/",
+    path: "/donate",
   },
 ];
 
