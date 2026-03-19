@@ -8,7 +8,7 @@ import fade from "@/public/assets/icons/2922c0605f3ece2f6b093b1f8225600fa9586b11
 
 function Footer() {
   return (
-    <div className="md:flex justify-center items-center space-x-20 mt-20 border mx-30 rounded-xl py-15 bg-[#00304C] relative overflow-hidden">
+    <div className="md:flex justify-center items-center space-x-20 mt-20 border mx-30 rounded-xl py-15 bg-[#00304C] relative overflow-hidden mb-6">
       {/* first */}
       <div className="space-y-8">
         <p className="font text-white">Powered By Innercity Mission</p>

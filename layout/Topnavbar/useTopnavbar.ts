@@ -20,16 +20,20 @@ export const leftMenu: menu_type[] = [
     path: '/impact',
   },
   {
-    title: "Monthly Giving",
-    path: "/",
-  },
-  {
     title: "Partner With Us",
     path: "/partner-with-us",
   },
   {
     title: "Who We Are",
     path: "/",
+  },
+  {
+    title: "Reach Out To Us",
+    path: "/",
+  },
+  {
+    title: "Monthly Giving",
+    path: "/donate",
   },
 ];
 
