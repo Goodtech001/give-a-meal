@@ -8,7 +8,7 @@ import {
 } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import groupHand from "@/public/assets/images/group.png";
+import groupHand from "@/public/assets/images/Group.png";
 import rectangle from "@/public/assets/images/Rectangle 4.jpeg";
 
 export default function PartnerWithUsHeroSection() {

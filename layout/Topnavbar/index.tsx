@@ -24,7 +24,9 @@ function TopNavBar() {
         initial={{ y: -100, opacity: 0 }} // Start off-screen and transparent
         animate={{ y: 0, opacity: 1 }} // Animate to position and full opacity
         exit={{ y: -100, opacity: 0 }} // Exit animation
-        transition={{ duration: 0.5, ease: "easeOut" }} className="fixe z-20 w-full border border-[#0D7FC1B2] rounded-4xl py-2  bg-light/25  text-dark/75 bg-white">
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="fixe z-20 w-full border border-[#0D7FC1B2] rounded-4xl py-2  bg-light/25  text-dark/75 bg-white"
+      >
         <div className="wrapper flex items-center justify-between gap-3 lg:container">
           <div className="flex gap-10 px-">
             {/* LOGO */}
@@ -35,12 +37,12 @@ function TopNavBar() {
               {leftMenu.map((menu, index) => (
                 <li
                   key={index}
-                  onMouseEnter={() => setSubMenuClicked(menu.subPath || "")}
+                  onMouseEnter={() => setSubMenuClicked(menu.subPath || "/")}
                   onMouseLeave={() => setSubMenuClicked("")}
                   className="relative"
                 >
                   <Link
-                    href={menu.path || ""}
+                    href={menu.path || "/"}
                     className="flex items-center gap-2 font-medium hover:underline"
                   >
                     {menu.title}

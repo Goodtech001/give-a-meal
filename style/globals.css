@@ -137,7 +137,7 @@ body {
   display: flex;
 }
 .bg-hero {
-  background-image: url("/assets/images/e4f46e6f81ee553f253998632457d5b4aec41580.jpg");
+  background-image: url("/assets/images/e4f46e6f81ee553f253998632457d5b4aec41580.jpeg");
   background-repeat: no-repeat;
   justify-content: center;
   filter: brightness(0.5);
