@@ -6,6 +6,12 @@
   --background: #ffffff;
   --foreground: #171717;
   overflow-x: hidden;
+    --text: 0, 48, 76, 1;
+      /* #00304C */
+}
+
+@theme {
+  --color-text: rgba(var(--text));
 }
 
 /* @theme inline {
