@@ -41,9 +41,11 @@ export default function ProfilePage() {
           ))}
         </div>
 
+        <div className="bg-gray-400 w-full h-0.5 my-10" />
+
         {/* ===================== TAB CONTENT SLIDER ===================== */}
         {/* Sliding content controlled by activeTab */}
-        <div className="pb-10 w-full pt-4">
+        <div className="pb-10 w-full ">
           {/* Viewport */}
           <div className="container mx-auto overflow-hidden w-full h-screen">
             {/* Sliding Track */}
@@ -54,7 +56,7 @@ export default function ProfilePage() {
               {tabs.map((tab, index) => (
                 <div
                   key={index}
-                  className="w-full h-screen flex-shrink-0 px-4 box-border overflow-y-auto scrollbar-thin"
+                  className="w-full h-full flex-shrink-0 px-4 box-border overflow-y-auto scrollbar-thin"
                 >
                   {tab.content}
                 </div>
