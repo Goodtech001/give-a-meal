@@ -21,23 +21,47 @@ export default function ProfilePage() {
           Hello, Food Hero Alex
         </h1>
       </div>
-      <div className="container mx-auto py-8">
-        <div className="flex flex-wrap gap-4 mb-6">
+      <div className="container mx-auto pt-8">
+        {/* ===================== DESKTOP TABS NAVIGATION ===================== */}
+        {/* Category tabs (scrollable horizontally) */}
+        <div className="flex md:justify-between items-center  overflow-x-auto whitespace-nowrap no-scrollbar md:gap-10 gap-5">
           {tabs.map((tab, index) => (
             <button
               key={index}
-              className={`px-4 py-2 rounded-md ${
-                activeTab === index
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-gray-700"
-              }`}
               onClick={() => setActiveTab(index)}
+              className={`flex-shrink-0 md:text-base text-sm font cursor-pointer hover:text-[#00304C] text-[#00304C]
+          ${
+            activeTab === index
+              ? "font text-[#00304C] border border-[#00304C] py-2.5 md:px-10 px-5 rounded-lg"
+              : ""
+          }`}
             >
               {tab.label}
             </button>
           ))}
         </div>
-        <div>{tabs[activeTab].content}</div>
+
+        {/* ===================== TAB CONTENT SLIDER ===================== */}
+        {/* Sliding content controlled by activeTab */}
+        <div className="pb-10 w-full pt-4">
+          {/* Viewport */}
+          <div className="container mx-auto overflow-hidden w-full h-screen">
+            {/* Sliding Track */}
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${activeTab * 100}%)` }}
+            >
+              {tabs.map((tab, index) => (
+                <div
+                  key={index}
+                  className="w-full h-screen flex-shrink-0 px-4 box-border overflow-y-auto scrollbar-thin"
+                >
+                  {tab.content}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
