@@ -1,4 +1,15 @@
+"use client";
 import { Icon } from "@iconify/react";
+// import Select from "react-select";
+import { countryOptions } from "@/types/country-selct";
+import Image from "next/image";
+// import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { Option } from "lucide-react";
+
+const ReactSelect = dynamic(() => import("react-select"), {
+  ssr: false,
+});
 
 export default function ProfileInfo() {
   return (
@@ -11,7 +22,7 @@ export default function ProfileInfo() {
 
             <div className="h-full flex justify-center items-center ">
               <span className="text-[#00304C] text-base font-bold font w-24 md:w-32 shrink-0">
-                Nick Name
+                Nick Name:
               </span>
             </div>
 
@@ -33,7 +44,7 @@ export default function ProfileInfo() {
             {/* LEFT LABEL */}
             <div className="h-full flex justify-center items-center md:pt-5 pt-0 md:pb-0 pb-20">
               <span className="text-[#00304C] font-bold text-base font w-24 md:w-32 shrink-0">
-                Name
+                Name:
               </span>
             </div>
 
@@ -75,7 +86,7 @@ export default function ProfileInfo() {
               Email Address:
             </span>
             <span className="text-[#00304C] md:hidden block text-base font font-bold w-24 md:w-32 shrink-0">
-              Email
+              Email:
             </span>
 
             {/* RIGHT SIDE */}
@@ -113,13 +124,21 @@ export default function ProfileInfo() {
           </div>
         </div>
 
-        <label className="text-[#00304C] text-base font">Message:</label>
-        <div className="pt-2.5 w-full">
-          <textarea
-            placeholder="Write your message..."
-            rows={5}
-            className="w-full px-3 font py-2.5 text-sm rounded-xl border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
-          />
+        {/* country */}
+        <div className="w-full pt-5">
+          <div className="mt-2 flex gap-6 md:gap-20 items-center">
+            {/* LEFT LABEL - Stays exactly the same */}
+            <div className="h-full flex justify-center items-center">
+              <span className="text-[#00304C] text-base font-bold font w-24 md:w-32 shrink-0">
+                Country:
+              </span>
+            </div>
+
+            {/* RIGHT SIDE - Select Dropdown */}
+            <div className="flex flex-col w-full">
+              <CountrySelect />
+            </div>
+          </div>
         </div>
 
         <button
@@ -130,5 +149,41 @@ export default function ProfileInfo() {
         </button>
       </form>
     </div>
+  );
+}
+type Option = {
+  value: string;
+  label: string;
+  flag: string;
+};
+const formatOptionLabel = (option: Option) => (
+  <div className="flex items-center gap-2">
+    <Image
+      src={option.flag}
+      alt={option.label}
+      width={20}
+      height={20}
+      className="rounded-sm object-cover"
+    />
+    <span>{option.label}</span>
+  </div>
+);
+
+export function CountrySelect() {
+  return (
+    <ReactSelect
+      options={countryOptions}
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      formatOptionLabel={formatOptionLabel as any}
+      placeholder="Select country"
+      unstyled
+      classNames={{
+        control: () =>
+          "w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus-within:ring-1 focus-within:ring-[#00304c]",
+        menu: () => "mt-2 border rounded-md shadow-lg bg-white",
+        option: ({ isFocused }) =>
+          `px-3 py-2 cursor-pointer ${isFocused ? "bg-gray-100" : ""}`,
+      }}
+    />
   );
 }
