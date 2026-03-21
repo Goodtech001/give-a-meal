@@ -1,4 +1,5 @@
 "use client";
+import Subscribe from "@/layout/subscribe";
 import MonthlyGiving from "@/section/profilepage/montly-giving";
 import PaymentMethod from "@/section/profilepage/payment-method";
 import ProfilePageHeroSection from "@/section/profilepage/profile-hero-section";
@@ -65,6 +66,7 @@ export default function ProfilePage() {
           </div>
         </div>
       </div>
+      <Subscribe />
     </div>
   );
 }

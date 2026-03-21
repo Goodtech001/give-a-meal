@@ -30,7 +30,7 @@ export default function ProfileInfo() {
             <div className="flex flex-col w-full">
               <input
                 type="text"
-                placeholder="john doe"
+                placeholder="Jehovah son"
                 className="w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
             </div>
@@ -57,7 +57,7 @@ export default function ProfileInfo() {
 
                 <input
                   type="text"
-                  placeholder="john doe"
+                  placeholder="john"
                   className="w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                 />
               </div>
@@ -70,7 +70,7 @@ export default function ProfileInfo() {
 
                 <input
                   type="text"
-                  placeholder="john doe"
+                  placeholder=" doe"
                   className="w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                 />
               </div>
@@ -141,16 +141,23 @@ export default function ProfileInfo() {
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="btn-secondary btn w-full mt-6 font cursor-pointer"
-        >
-          <span>Submit</span>
-        </button>
+        {/* button */}
+
+        <div className="flex justify-center items-center">
+          <button
+            type="submit"
+            className="btn-secondary w-full md:w-auto md:px-20 py-4  rounded-xl text-lg text-white cursor-pointer 
+             transition-transform transition-colors duration-300 font ease-in-out 
+             hover:scale-105"
+          >
+            <span>Edit Profile</span>
+          </button>
+        </div>
       </form>
     </div>
   );
 }
+
 type Option = {
   value: string;
   label: string;
@@ -161,9 +168,9 @@ const formatOptionLabel = (option: Option) => (
     <Image
       src={option.flag}
       alt={option.label}
-      width={20}
-      height={20}
-      className="rounded-sm object-cover"
+      width={25}
+      height={25}
+      className="rounded-full object-cover"
     />
     <span>{option.label}</span>
   </div>

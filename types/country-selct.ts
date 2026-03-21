@@ -16,6 +16,11 @@ export const countryOptions = [
     label: "United Kingdom",
     flag: "https://flagcdn.com/w40/gb.png",
   },
+  {
+    value: "Canada",
+    label: "Canada",
+    flag: "https://flagcdn.com/w40/ca.png",
+  },
 ];
 
 // export const countryOptions = [
