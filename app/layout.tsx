@@ -29,6 +29,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <div id="modal-root" />
+        <div id="portal"></div>
         <Footer />
       </body>
     </html>

@@ -3,15 +3,17 @@ import { Icon } from "@iconify/react";
 // import Select from "react-select";
 import { countryOptions } from "@/types/country-selct";
 import Image from "next/image";
-// import { useState, useEffect } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import { Option } from "lucide-react";
+import Modal from "@/components/modal";
 
 const ReactSelect = dynamic(() => import("react-select"), {
   ssr: false,
 });
 
 export default function ProfileInfo() {
+  const [modalClosed, setModalClosed] = useState(true);
   return (
     <div>
       <form className="w-full max-w-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0 space-y-16">
@@ -108,7 +110,11 @@ export default function ProfileInfo() {
                 />
               </div>
               {/* chnage email icon */}
-              <button className="absolute cursor-pointer flex gap-2 -bottom-8.5 items-center  -left-0">
+              <button
+                type="button"
+                onClick={() => setModalClosed(!modalClosed)}
+                className="absolute cursor-pointer flex gap-2 -bottom-8.5 items-center  -left-0"
+              >
                 <p className="text-text font font-bold">Change Email</p>
                 <span>
                   {" "}
@@ -120,6 +126,65 @@ export default function ProfileInfo() {
                   />
                 </span>
               </button>
+
+              {/* Modal */}
+              <Modal
+                closeModal={() => setModalClosed(!modalClosed)}
+                isModalClosed={modalClosed}
+                parentClassName="!py-6 md:!py-10  !items-start flex items-center justify-center"
+                className="!w-11/12 md:!w-fit"
+              >
+                <div className="w-full rounded-2xl bg-bg p-5 shadow-2xl md:min-w-[40rem] md:p-8">
+                  {/* Header */}
+                  <div className="flex items-center justify-between">
+                    <h1 className="text-lg text-text font-semibold md:text-xl">
+                      Change Profile Picture
+                    </h1>
+
+                    {/* Close Button */}
+                    <button
+                      type="button"
+                      onClick={() => setModalClosed(!modalClosed)}
+                      aria-label="Close modal"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-card text-red-500 transition hover:bg-red-50 hover:text-red-600 cursor-pointer"
+                    >
+                      <Icon icon="mingcute:close-line" className="text-xl" />
+                    </button>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="mt-5">
+                    <hr className="border-gray-200" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-col items-center text-center">
+                    {/* Profile Avatar */}
+                    <div className="flex h-24 w-24 items-center justify-center mt-7 rounded-full bg-orange-500 text-3xl font-bold text-white shadow-md transition md:h-36 md:w-36 md:text-5xl">
+                      PM
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex items-center justify-center gap-4 md:mt-12 mb-7 mt-7 flex-wrap sm:flex-nowrap">
+                      <button className="btn-primary w-fit">
+                        <Icon
+                          icon="iconamoon:profile-circle-fill"
+                          className="text-lg"
+                        />
+                        Upload Profile
+                      </button>
+
+                      <button className="btn-secondary w-fit">
+                        <Icon
+                          icon="mingcute:user-remove-fill"
+                          className="text-lg"
+                        />
+                        Remove Profile
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
             </div>
           </div>
         </div>
