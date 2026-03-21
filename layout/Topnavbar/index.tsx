@@ -107,7 +107,7 @@ function TopNavBar() {
 
       {/* ===================== MOBILE SLIDE ===================== */}
       <div
-        className={`fixed inset-0 z-20 bg-dark/50 text-textcolor backdrop-blur-sm transition-all duration-500 ease-in-out md:hidden ${navOpen ? "visible clip-path-slide-top-down" : "invisible delay-200 clip-path-close"}`}
+        className={`fixed inset-0 z-20 bg-dark/50 text-textcolor bg-white transition-all duration-500 ease-in-out md:hidden ${navOpen ? "visible clip-path-slide-top-down" : "invisible delay-200 clip-path-close"}`}
       >
         <div
           className={`${navOpen ? "delay-200 clip-path-slide-top-down" : "clip-path-close"} h-full w-full bg-light px-2 py-3 duration-500`}

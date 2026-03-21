@@ -12,7 +12,7 @@ function DonateHero() {
     </div>
     <div className='absolute top-0 w-full'>
         <TopNavBar/>
-        <h1 className='font text-5xl text-center text-white font-medium mt-50 '>Help reach hungry families in <br /> the north </h1>
+        <h1 className='font md:text-5xl text-4xl text-center text-white font-medium mt-50 '>Help reach hungry families in <br /> the north </h1>
     </div>
 
      <Image src={rectangle} alt="alt" />
