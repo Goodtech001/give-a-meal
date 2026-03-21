@@ -31,23 +31,23 @@ function HeroSection() {
           transition={transitionSpring}
         >
           <div className="md:grid grid-cols-10 md:flex-row flex-col-reverse items-cente md:space-x-70 md:px-40 mt-20 relative md:mt-35 md:space-y-0 space-y-10">
-            <div className="flex md:hidden justify-center ">
+            <div className="flex md:hidden justify-center m">
               <Image
                 src={phone}
                 alt=""
-                className="w-80 md:h-full h-90 object-top object-cover md:hidden"
+                className="w-50 md:h-full h-60 object-top object-cover md:hidden"
               />
             </div>
             <div className="md:col-span-7">
-              <p className="text-[#00304C] text-6xl md:text-left text-center md:px-0 px-20 font ">
+              <p className="text-[#00304C] md:text-6xl font-medium text-5xl md:text-left text-center md:px-0 px-5 font ">
                 Make Impact With the Give A Meal App
               </p>
-              <p className="text-[#00304CCC] font mt-10 leading-7 md:px-0 px-30 md:text-left text-center ">
+              <p className="text-[#00304CCC] font mt-10 leading-7 md:px-0 px-10 md:text-left text-center ">
                 Feeding someone in need is now as simple as a tap on your
                 screen. Help us build a world without hunger by downloading Give
                 A Meal and sharing a meal today. Every tap makes a difference.
               </p>
-              <div className="flex mt-15 justify-cente">
+              <div className="flex mt-15 justify-center">
                 <button className="cursor-pointer btn">
                   <Image src={play} alt="" className="w-30" />
                 </button>

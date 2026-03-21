@@ -3,13 +3,13 @@ import { motion } from "framer-motion";
 
 function Impact() {
   return (
-    <div className="md:flex grid-cols-2 mt-10 justify-center items-center relative">
+    <div className="md:flex md:grid-cols-2 mt-10 justify-center items-center relative">
       <div className="md:border md:w-260  flex md:flex-row flex-col-reverse items-center rounded-l-2xl border-gray-200 md:space-x-20 md:justify-normal justify-center">
         <div className="md:border-none border rounded-2xl border-gray-300">
           <div className="relative">
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="w-110 h-110 rounded-t-2xl rounded-bl-2xl bg-[#FF8F07] font text-white "
+              className="md:w-110 h-110 w-80 rounded-t-2xl rounded-bl-2xl bg-[#FF8F07] font text-white "
             >
               <div className="p-5 space-y-4">
                 <p className="border font py-2 rounded-lg px-4 w-fit text-xs">
@@ -21,7 +21,7 @@ function Impact() {
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="absolute w-95 h-72 bg-[#03324E] rounded-t-2xl rounded-bl-2xl bottom-0"
+                className="absolute md:w-95 w-65 h-72 bg-[#03324E] rounded-t-2xl rounded-bl-2xl bottom-0"
               >
                 <div className="p-5 space-y-4">
                   <p className="border font py-2 rounded-lg px-4 w-fit text-xs">
@@ -34,7 +34,7 @@ function Impact() {
 
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="absolute w-80 h-35 bg-[#0D7FC1] rounded-t-2xl rounded-bl-2xl bottom-0"
+                className="absolute md:w-80 w-50 h-35 bg-[#0D7FC1] rounded-t-2xl rounded-bl-2xl bottom-0"
               >
                 <div className="p-5 space-y-4">
                   <p className="border font py-2 rounded-lg px-4 w-fit text-xs">
