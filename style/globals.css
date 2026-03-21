@@ -73,6 +73,14 @@ body {
 .btn:hover {
   transform: scale(1.1); /* Swell on hover */
 }
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 /* globals.css */
 

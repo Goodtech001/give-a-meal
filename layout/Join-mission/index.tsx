@@ -19,20 +19,20 @@ function Mission() {
       <h1 className='font text-4xl flex items-center justify-center font-semibold text-[#00304C]'>
         Join the Mission
       </h1>
-      <p className='flex items-center justify-center text-center font mt-6'>
+      <p className='flex items-center justify-center text-center font mt-6 text-[#00304CCC]'>
         Find a story that moves you and contribute to our ongoing goals. With Give A Meal, <br />
         your generosity goes exactly where it’s needed most.
       </p>
 
       <motion.div 
         whileHover={{ scale: 1.05 }} 
-        className='border-none md:border md:gap- flex md:flex-row flex-col items-center justify-center mt-15'
+        className='border-none md:border md:gap- flex md:flex-row flex-col items-center justify-center mt-15 px-6'
       >
         <div className='relative'>
           <Image 
             src={mission} 
             alt='' 
-            className='md:w-100 w-120 rounded-l-2xl brightness-50' 
+            className='md:w-100 w-full md:rounded-l-2xl rounded-2xl brightness-50' 
           />
           <div className='border bg-[#FF8F07] text-white flex w-fit font items-center p-4 rounded-tl-2xl rounded-br-2xl gap-2 absolute top-0 border-transparent'>
             <Icon icon="boxicons:siren" width="24" height="24" />
@@ -42,12 +42,12 @@ function Mission() {
 
         <motion.div 
           whileHover={{ scale: 1.05 }} 
-          className='md:border border-gray-300 py-8 md:px-15 px-16 bg-white md:rounded-r-2xl shadow-lg w-fit'
+          className='md:border border-gray-300 py-8 md:px-15 px-25 bg-white md:rounded-r-2xl shadow-lg w-fit'
         >
-          <h1 className='text-[#00304C] font text-3xl font-semibold'>
+          <h1 className='text-[#00304C] font md:text-3xl text-xl truncate font-semibold'>
             Help reach hungry families <br /> in the north
           </h1>
-          <p className='font mt-6 text-[#00304CCC]'>
+          <p className='font mt-6 text-[#00304CCC] truncate'>
             Shared meals will provide hot meals, monthly <br /> food baskets and nutrition supplements to <br /> families in Northern Nigeria...
           </p>
 

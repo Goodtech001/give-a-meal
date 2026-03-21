@@ -57,10 +57,10 @@ function AboutDonate() {
     (step) => step.step === activeStep,
   )?.component;
   return (
-    <div className="grid grid-cols-10 py-10 px-20 gap-10">
+    <div className="md:grid grid-cols-10 py-10 md:px-20 px-4 gap-10">
       {/* First */}
-      <div className="space-y-6 col-span-6">
-        <h1 className="font text-[#00304C] text-4xl font-semibold ">
+      <div className="space-y-6 col-span-6 md:text-left text-center">
+        <h1 className="font text-[#00304C] md:text-4xl text-3xl font-semibold ">
           About This Cause
         </h1>
         <p className="font text-[#00304CCC] ">
@@ -82,7 +82,7 @@ function AboutDonate() {
       </div>
 
       {/* Second */}
-      <div className="col-span-4 space-y-6 ">
+      <div className="col-span-4 md:space-y-6 space-y-15 md:mt-0 mt-15 ">
         {/* top */}
         <div className="border-3 border-gray-300 p-8 rounded-xl">
           <div className="flex justify-between border-gray-400 space-y-2">

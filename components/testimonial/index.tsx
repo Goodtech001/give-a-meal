@@ -44,13 +44,13 @@ export default function TestimonialCard() {
       </div>
 
 
-      <div className="relative">
+      <div className="relative p-8">
         <div className="flex flex-col items-center justify-center py-10 px-4 mt-10 z-99 bg-white">
-        <div className="relative w-full max-w-2xl bg-white rounded-xl shadow-sm p-8 md:p-10 text-cente fle flex-col  md:items-center md:justify-between">
+        <div className="relative w-full max-w-2xl bg-white rounded-xl shadow-sm p-8 md:p-10 text-cente fle md:flex-col  md:items-center md:justify-between">
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
-            className="absolute left-10 md:-left-20 top-1/2 -translate-y-1/2 bg-white shadow rounded-lg p-2 hover:bg-gray-100 transition"
+            className="absolute -left-11 md:-left-20  top-1/2 -translate-y-1/2 bg-white shadow rounded-lg  p-2 hover:bg-gray-100 transition"
           >
             <ChevronLeftIcon className="h-5 w-5 text-gray-500" />
           </button>
@@ -63,7 +63,7 @@ export default function TestimonialCard() {
             height="30"
             className="text-[#03324E66]"
           />
-          <div className="flex mt-5">
+          <div className="md:flex mt-5">
             <div className="md:pr-8">
               <p className="text-gray-700 leading-relaxed mb-6 font">{text}</p>
             </div>
@@ -74,13 +74,13 @@ export default function TestimonialCard() {
             </div>
           </div>
 
-          <p className="font-semibold text-[#1e4356] font flex justify-end-safe">
+          <p className="font-semibold text-[#1e4356] font flex md:justify-end-safe">
             {author}
           </p>
           {/* Right Arrow */}
           <button
             onClick={nextSlide}
-            className="absolute right-3 md:-right-20 top-1/2 -translate-y-1/2 bg-white shadow rounded-lg p-2 hover:bg-gray-100 transition"
+            className="absolute -right-11 md:-right-20 top-1/2 -translate-y-1/2 bg-white shadow rounded-lg p-2 hover:bg-gray-100 transition"
           >
             <ChevronRightIcon className="h-5 w-5 text-gray-500" />
           </button>
