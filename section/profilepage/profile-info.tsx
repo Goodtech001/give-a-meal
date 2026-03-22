@@ -7,6 +7,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { Option } from "lucide-react";
 import Modal from "@/components/modal";
+import Logo from "@/components/logo";
 
 const ReactSelect = dynamic(() => import("react-select"), {
   ssr: false,
@@ -134,54 +135,62 @@ export default function ProfileInfo() {
                 parentClassName="!py-6 md:!py-10  !items-start flex items-center justify-center"
                 className="!w-11/12 md:!w-fit"
               >
-                <div className="w-full rounded-2xl bg-bg p-5 shadow-2xl md:min-w-[40rem] md:p-8">
+                <div className="w-full rounded-2xl bg-white p-6 shadow-2xl md:min-w-[40rem] md:p-8">
                   {/* Header */}
-                  <div className="flex items-center justify-between">
-                    <h1 className="text-lg text-text font-semibold md:text-xl">
-                      Change Profile Picture
-                    </h1>
-
-                    {/* Close Button */}
+                  <div className="flex justify-end">
                     <button
                       type="button"
                       onClick={() => setModalClosed(!modalClosed)}
                       aria-label="Close modal"
-                      className="flex h-9 w-9 items-center justify-center rounded-lg border border-gray-300 bg-card text-red-500 transition hover:bg-red-50 hover:text-red-600 cursor-pointer"
+                      className="flex h-9 w-9 items-center justify-center rounded-lg cursor-pointer text-[#0D7FC1]"
                     >
-                      <Icon icon="mingcute:close-line" className="text-xl" />
+                      <Icon icon="mingcute:close-line" className="text-3xl" />
                     </button>
                   </div>
 
-                  {/* Divider */}
-                  <div className="mt-5">
-                    <hr className="border-gray-200" />
+                  {/* Logo */}
+                  <div className="flex justify-center ">
+                    <Logo className="w-32 md:w-40" variant="alt" />
                   </div>
 
                   {/* Content */}
-                  <div className="flex flex-col items-center text-center">
-                    {/* Profile Avatar */}
-                    <div className="flex h-24 w-24 items-center justify-center mt-7 rounded-full bg-orange-500 text-3xl font-bold text-white shadow-md transition md:h-36 md:w-36 md:text-5xl">
-                      PM
-                    </div>
+                  <div className="flex flex-col items-center text-center mt-4">
+                    <h1 className="text-[#0F172A] text-2xl md:text-3xl font-semibold leading-tight">
+                      Change Your Email Address
+                    </h1>
 
-                    {/* Action Buttons */}
-                    <div className="flex items-center justify-center gap-4 md:mt-12 mb-7 mt-7 flex-wrap sm:flex-nowrap">
-                      <button className="btn-primary w-fit">
-                        <Icon
-                          icon="iconamoon:profile-circle-fill"
-                          className="text-lg"
-                        />
-                        Upload Profile
-                      </button>
+                    <p className="text-[#64748B] mt-3">
+                      Enter your new email address
+                    </p>
 
-                      <button className="btn-secondary w-fit">
-                        <Icon
-                          icon="mingcute:user-remove-fill"
-                          className="text-lg"
+                    {/* Input */}
+                    <div className="flex items-center w-full md:w-sm gap-3 mt-8 px-3 py-3 text-sm rounded-xl border border-gray-400">
+                      <Icon
+                        icon="tabler:mail-fast"
+                        className="text-2xl text-[#64748B] shrink-0"
+                      />
+
+                      <div className="flex items-center gap-2 w-full">
+                        <div className="w-[1px] h-4 bg-gray-400" />
+
+                        <input
+                          type="text"
+                          placeholder="Enter Your Email"
+                          className="w-full bg-transparent outline-none text-sm placeholder:text-gray-400"
                         />
-                        Remove Profile
-                      </button>
+                      </div>
                     </div>
+                  </div>
+
+                  {/* Button */}
+                  <div className="flex justify-center my-8">
+                    <button
+                      type="submit"
+                      className="w-auto px-16 md:px-20 py-3.5 bg-[#64748B] rounded-4xl text-lg text-white cursor-pointer 
+      transition-transform duration-300 ease-in-out hover:scale-105"
+                    >
+                      <span>Continue</span>
+                    </button>
                   </div>
                 </div>
               </Modal>
