@@ -1,10 +1,18 @@
 "use client";
 import Subscribe from "@/layout/subscribe";
 import MonthlyGiving from "@/section/profilepage/montly-giving";
-import PaymentMethod from "@/section/profilepage/payment-method";
+// import PaymentMethod from "@/section/profilepage/payment-method";
 import ProfilePageHeroSection from "@/section/profilepage/profile-hero-section";
 import ProfileInfo from "@/section/profilepage/profile-info";
 import { useState } from "react";
+import dynamic from "next/dynamic";
+
+const PaymentMethod = dynamic(
+  () => import("@/section/profilepage/payment-method"),
+  {
+    ssr: false,
+  },
+);
 
 export default function ProfilePage() {
   const tabs = [

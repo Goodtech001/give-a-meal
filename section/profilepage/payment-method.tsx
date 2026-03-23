@@ -1,25 +1,36 @@
 "use client";
 import { Icon } from "@iconify/react";
 import Modal from "@/components/modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+type Card = {
+  id: number;
+  name: string;
+  last4: string;
+  expiry: string;
+};
+
+type FormData = {
+  cardNumber: string;
+  cvv: string;
+  name: string;
+  expiry: string;
+};
 
 export default function PaymentMethod() {
-  type Card = {
-    id: number;
-    name: string;
-    last4: string;
-    expiry: string;
-  };
+  // ✅ UI STATE
+  const [modalClosed, setModalClosed] = useState(true);
 
-  type FormData = {
-    cardNumber: string;
-    cvv: string;
-    name: string;
-    expiry: string;
-  };
+  // ✅ CARDS STATE (load from localStorage)
+  const [cards, setCards] = useState<Card[]>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("cards");
+      return stored ? JSON.parse(stored) : [];
+    }
+    return [];
+  });
 
-  const [cards, setCards] = useState<Card[]>([]);
-
+  // ✅ FORM STATE
   const [formData, setFormData] = useState<FormData>({
     cardNumber: "",
     cvv: "",
@@ -27,6 +38,7 @@ export default function PaymentMethod() {
     expiry: "",
   });
 
+  // ✅ HANDLE INPUT CHANGE
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -36,36 +48,47 @@ export default function PaymentMethod() {
     }));
   };
 
+  // ✅ HANDLE SUBMIT
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // ❗ stops refresh
+    e.preventDefault();
+
+    // validate
     if (
       !formData.cardNumber ||
       !formData.cvv ||
       !formData.name ||
       !formData.expiry
     ) {
-      return; // stop if empty
+      return;
     }
 
-    const newCard = {
+    const newCard: Card = {
       id: Date.now(),
       name: formData.name,
       last4: formData.cardNumber.slice(-4),
       expiry: formData.expiry,
     };
 
-    setCards((prev) => [...prev, newCard]);
+    setCards((prev) => {
+      const updated = [...prev, newCard];
 
-    // clear form
+      // ✅ persist
+      localStorage.setItem("cards", JSON.stringify(updated));
+
+      return updated;
+    });
+
+    // ✅ reset form
     setFormData({
       cardNumber: "",
       cvv: "",
       name: "",
       expiry: "",
     });
-  };
 
-  const [modalClosed, setModalClosed] = useState(true);
+    // ✅ close modal (optional UX)
+    setModalClosed(true);
+  };
 
   return (
     <div className="w-full max-w-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0">
