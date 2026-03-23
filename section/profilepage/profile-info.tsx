@@ -34,7 +34,7 @@ export default function ProfileInfo() {
               <input
                 type="text"
                 placeholder="Jehovah son"
-                className="w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                className="w-full px-3 py-4 text-sm font rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
             </div>
           </div>
@@ -54,27 +54,27 @@ export default function ProfileInfo() {
             <div className="flex md:flex-row flex-col gap-6 w-full">
               {/* FIRST */}
               <div className="flex flex-col w-full ">
-                <label className="text-[#00304C] text-base font-bold font-semibold mb-2">
+                <label className="text-[#00304C] text-base font font-bold font-semibold mb-2">
                   First:
                 </label>
 
                 <input
                   type="text"
                   placeholder="john"
-                  className="w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                  className="w-full px-3 py-4 text-sm rounded-md font border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                 />
               </div>
 
               {/* LAST */}
               <div className="flex flex-col w-full">
-                <label className="text-[#00304C] text-base font-bold font-semibold mb-2">
+                <label className="text-[#00304C] text-base font font-bold font-semibold mb-2">
                   Last:
                 </label>
 
                 <input
                   type="text"
                   placeholder=" doe"
-                  className="w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                  className="w-full px-3 py-4 text-sm rounded-md border font border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                 />
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function ProfileInfo() {
               <input
                 type="email"
                 placeholder="johndoe@gmail.com"
-                className="w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                className="w-full px-3 py-4 text-sm font rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
 
               {/* ICON (floating beside, not affecting layout) */}
@@ -203,7 +203,7 @@ export default function ProfileInfo() {
           <div className="mt-2 flex gap-6 md:gap-20 items-center">
             {/* LEFT LABEL - Stays exactly the same */}
             <div className="h-full flex justify-center items-center">
-              <span className="text-[#00304C] text-base font-bold font w-24 md:w-32 shrink-0">
+              <span className="text-[#00304C] text-base  font-bold font w-24 md:w-32 shrink-0">
                 Country:
               </span>
             </div>
@@ -220,7 +220,7 @@ export default function ProfileInfo() {
         <div className="flex justify-center items-center">
           <button
             type="submit"
-            className="btn-secondary w-full md:w-auto md:px-20 py-4  rounded-xl text-lg text-white cursor-pointer 
+            className="btn-secondary w-full md:w-auto md:px-20 py-4   rounded-xl text-lg text-white cursor-pointer 
              transition-transform transition-colors duration-300 font ease-in-out 
              hover:scale-105"
           >
