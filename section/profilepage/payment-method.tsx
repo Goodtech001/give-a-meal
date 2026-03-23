@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react";
 import Modal from "@/components/modal";
 import { useState } from "react";
-import Logo from "@/components/logo";
 
 export default function PaymentMethod() {
   const [modalClosed, setModalClosed] = useState(true);
