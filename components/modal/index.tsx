@@ -38,7 +38,7 @@ const Modal = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`mx-auto w-fit overflow-y-auto ${className}`}
+        className={`mx-auto w-150 overflow-y-auto bg-white rounded-2xl ${className}`}
       >
         {children}
       </div>
