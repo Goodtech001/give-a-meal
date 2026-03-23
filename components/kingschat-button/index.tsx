@@ -75,7 +75,7 @@ export default function KingsChatButton() {
 
 
   return (
-    <div className="px-40">
+    <div className="md:px-40 px-10">
       <button
     type="button"
       // onClick={handleKingsChatLogin}

@@ -150,6 +150,14 @@ body {
   justify-content: center;
   display: flex;
 }
+.bg-about {
+  background-image: url("/assets/images/faq.jpeg");
+  /* background-size: cover; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  justify-content: center;
+  display: flex;
+}
 .bg-hero {
   background-image: url("/assets/images/e4f46e6f81ee553f253998632457d5b4aec41580.jpeg");
   background-repeat: no-repeat;

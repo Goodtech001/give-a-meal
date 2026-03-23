@@ -26,7 +26,8 @@ export const leftMenu: menu_type[] = [
   },
   {
     title: "Who We Are",
-    path: "/",
+    path: "/about
+",
   },
   {
     title: "Reach Out To Us",
