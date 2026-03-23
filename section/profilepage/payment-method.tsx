@@ -42,10 +42,33 @@ export default function PaymentMethod() {
   // ✅ HANDLE INPUT CHANGE
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    let finalValue = value;
 
+    // 1. Handle Card Number Formatting
+    if (name === "cardNumber") {
+      const digits = value.replace(/\D/g, "");
+      finalValue = digits.match(/.{1,4}/g)?.join(" ") || "";
+
+      // Safety check: Don't let it exceed 19 characters (16 digits + 3 spaces)
+      if (finalValue.length > 19) return;
+    }
+
+    // 2. Handle Expiry Formatting (MM / YY)
+    if (name === "expiry") {
+      const digits = value.replace(/\D/g, "");
+      if (digits.length <= 2) {
+        finalValue = digits;
+      } else {
+        finalValue = `${digits.slice(0, 2)} / ${digits.slice(2, 4)}`;
+      }
+
+      if (finalValue.length > 7) return;
+    }
+
+    // 3. Single State Update (Much cleaner!)
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: finalValue,
     }));
   };
 
@@ -133,61 +156,69 @@ export default function PaymentMethod() {
       )}
 
       {cards.map((card) => (
-        <div key={card.id} className="flex items-center gap-4 pb-5">
+        <div
+          key={card.id}
+          className="flex items-center justify-between md:justify-start gap-2 md:gap-4 pb-6 md:w-fit w-full"
+        >
+          {/* MAIN CARD BOX */}
           <div
             onClick={() => handleSelectCard(card.id)}
-            className="flex justify-between items-start gap-24 px-8 pb-11 pt-8 w-fit border border-gray-300 rounded-2xl"
+            className="flex justify-between items-start gap-4 md:gap-24 px-4 md:px-8 pb-8 md:pb-11 pt-6 md:pt-8 flex-1 md:w-fit border border-gray-300 rounded-2xl cursor-pointer"
           >
-            <div className="flex gap-3 items-starts">
-              <div className="h-full flex justify-start ">
-                {" "}
-                <Icon icon="logos:mastercard" className="text-3xl shrink-0" />
+            <div className="flex gap-3 items-start">
+              <div className="flex justify-start pt-1">
+                <Icon
+                  icon="logos:mastercard"
+                  className="text-2xl md:text-3xl shrink-0"
+                />
               </div>
 
               <div className="flex flex-col">
-                <h1 className="text-[#00304C] font-semibold">{card.name}</h1>
+                <h1 className="text-[#00304C] font-semibold text-sm md:text-base leading-tight">
+                  {card.name}
+                </h1>
 
-                <p className="text-gray-500 text-sm">
+                <p className="text-gray-500 text-xs md:text-sm mt-1">
                   •••• •••• •••• {card.last4}
                 </p>
 
-                <p className="text-gray-400 text-sm">
-                  Expiry{" "}
-                  {card.expiry.length === 4
-                    ? `${card.expiry.slice(0, 2)} / ${card.expiry.slice(2)}`
-                    : card.expiry}
+                <p className="text-gray-400 text-xs md:text-sm">
+                  Expiry {card.expiry}
                 </p>
               </div>
             </div>
 
             {/* ACTIVE DOT */}
-            <div className="">
-              {" "}
+            <div className="pt-1">
               {card.active ? (
-                <div className="w-4 h-4 bg-[#FF8F07] rounded-full shrink-0" />
+                <div className="w-3 h-3 md:w-4 md:h-4 bg-[#FF8F07] rounded-full shrink-0 shadow-sm" />
               ) : (
-                <div className="w-4 h-4 bg-gray-300 rounded-full shrink-0" />
+                <div className="w-3 h-3 md:w-4 md:h-4 bg-gray-300 rounded-full shrink-0" />
               )}
             </div>
           </div>
 
+          {/* DELETE BUTTON */}
           <button
-            onClick={() => handleDeleteCard(card.id)}
-            className="cursor-pointer"
+            onClick={(e) => {
+              e.stopPropagation(); // Prevents card selection when deleting
+              handleDeleteCard(card.id);
+            }}
+            className="cursor-pointer p-2 hover:bg-red-50 rounded-full transition-colors shrink-0"
           >
             <Icon
               icon="mingcute:delete-2-fill"
-              className="text-2xl text-text"
+              className="text-xl md:text-2xl text-text hover:text-red-500"
             />
           </button>
         </div>
       ))}
 
-      <div className="flex justify-start">
+      <div className="flex justify-start mt-10">
         <button
           onClick={() => setModalClosed(!modalClosed)}
           type="submit"
-          className="btn-secondary w-full flex justify-center items-center font gap-2 md:w-auto md:px-15 py-4 rounded-xl text-lg text-white cursor-pointer 
+          className="btn-secondary  flex justify-center items-center font gap-2 md:w-auto md:px-15 px-5 px-0 py-4 rounded-xl text-lg text-white cursor-pointer 
   transition-transform transition-colors duration-300 font ease-in-out 
   hover:scale-105"
         >
@@ -234,6 +265,7 @@ export default function PaymentMethod() {
                       <input
                         type="text"
                         name="cardNumber"
+                        maxLength={19} // CRITICAL: 16 digits + 3 spaces
                         value={formData.cardNumber}
                         onChange={handleChange}
                         placeholder="1234 5678 9012 3456"
