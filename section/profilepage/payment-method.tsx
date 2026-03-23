@@ -136,10 +136,13 @@ export default function PaymentMethod() {
         <div key={card.id} className="flex items-center gap-4 pb-5">
           <div
             onClick={() => handleSelectCard(card.id)}
-            className="flex justify-between items-center gap-24 px-5 pb-11 pt-5 w-fit border border-gray-300 rounded-2xl"
+            className="flex justify-between items-start gap-24 px-8 pb-11 pt-8 w-fit border border-gray-300 rounded-2xl"
           >
-            <div className="flex gap-3 items-center">
-              <Icon icon="logos:mastercard" className="text-3xl shrink-0" />
+            <div className="flex gap-3 items-starts">
+              <div className="h-full flex justify-start ">
+                {" "}
+                <Icon icon="logos:mastercard" className="text-3xl shrink-0" />
+              </div>
 
               <div className="flex flex-col">
                 <h1 className="text-[#00304C] font-semibold">{card.name}</h1>
@@ -148,16 +151,24 @@ export default function PaymentMethod() {
                   •••• •••• •••• {card.last4}
                 </p>
 
-                <p className="text-gray-400 text-sm">Exp {card.expiry}</p>
+                <p className="text-gray-400 text-sm">
+                  Expiry{" "}
+                  {card.expiry.length === 4
+                    ? `${card.expiry.slice(0, 2)} / ${card.expiry.slice(2)}`
+                    : card.expiry}
+                </p>
               </div>
             </div>
 
             {/* ACTIVE DOT */}
-            {card.active ? (
-              <div className="w-4 h-4 bg-[#FF8F07] rounded-full shrink-0" />
-            ) : (
-              <div className="w-4 h-4 bg-gray-300 rounded-full shrink-0" />
-            )}
+            <div className="">
+              {" "}
+              {card.active ? (
+                <div className="w-4 h-4 bg-[#FF8F07] rounded-full shrink-0" />
+              ) : (
+                <div className="w-4 h-4 bg-gray-300 rounded-full shrink-0" />
+              )}
+            </div>
           </div>
 
           <button
