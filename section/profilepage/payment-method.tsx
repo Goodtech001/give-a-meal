@@ -1,15 +1,119 @@
+"use client";
 import { Icon } from "@iconify/react";
 import Modal from "@/components/modal";
 import { useState } from "react";
 
 export default function PaymentMethod() {
+  type Card = {
+    id: number;
+    name: string;
+    last4: string;
+    expiry: string;
+  };
+
+  type FormData = {
+    cardNumber: string;
+    cvv: string;
+    name: string;
+    expiry: string;
+  };
+
+  const [cards, setCards] = useState<Card[]>([]);
+
+  const [formData, setFormData] = useState<FormData>({
+    cardNumber: "",
+    cvv: "",
+    name: "",
+    expiry: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // ❗ stops refresh
+    if (
+      !formData.cardNumber ||
+      !formData.cvv ||
+      !formData.name ||
+      !formData.expiry
+    ) {
+      return; // stop if empty
+    }
+
+    const newCard = {
+      id: Date.now(),
+      name: formData.name,
+      last4: formData.cardNumber.slice(-4),
+      expiry: formData.expiry,
+    };
+
+    setCards((prev) => [...prev, newCard]);
+
+    // clear form
+    setFormData({
+      cardNumber: "",
+      cvv: "",
+      name: "",
+      expiry: "",
+    });
+  };
+
   const [modalClosed, setModalClosed] = useState(true);
+
   return (
     <div className="w-full max-w-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0">
-      <h1 className="font text-base text-text pb-10">
-        You don’t have any payment method saved. Add payment method to donate
-        faster.
-      </h1>
+      {cards.length === 0 ? (
+        <h1 className="font text-base text-text pb-10">
+          You don’t have any payment method saved. Add payment method to donate
+          faster.
+        </h1>
+      ) : (
+        <h1 className="font text-xl text-text pb-10">
+          Select your preferred payment method.
+        </h1>
+      )}
+
+      {cards.map((card) => (
+        <div key={card.id} className="flex items-center gap-4 pb-5">
+          <div className="flex justify-between items-center gap-24 px-5 pb-11 pt-5 w-fit border border-gray-300 rounded-2xl">
+            <div className="flex gap-3 items-center">
+              <Icon icon="logos:mastercard" className="text-3xl shrink-0" />
+
+              <div className="flex flex-col">
+                <h1 className="text-[#00304C] font-semibold">{card.name}</h1>
+
+                <p className="text-gray-500 text-sm">
+                  •••• •••• •••• {card.last4}
+                </p>
+
+                <p className="text-gray-400 text-sm">Exp {card.expiry}</p>
+              </div>
+            </div>
+
+            <div className="w-4 h-4 bg-[#FF8F07] rounded-full shrink-0" />
+          </div>
+
+          <button
+            onClick={() =>
+              setCards((prev) => prev.filter((c) => c.id !== card.id))
+            }
+            className="cursor-pointer"
+          >
+            <Icon
+              icon="mingcute:delete-2-fill"
+              className="text-2xl text-text"
+            />
+          </button>
+        </div>
+      ))}
+
       <div className="flex justify-start">
         <button
           onClick={() => setModalClosed(!modalClosed)}
@@ -41,7 +145,7 @@ export default function PaymentMethod() {
             {/* Content */}
             <div className="flex flex-col items-center text-center ">
               {/* Input */}
-              <form className="space-y-6 w-full">
+              <form onSubmit={handleSubmit} className="space-y-6 w-full">
                 {/* ROW 1 */}
                 <div className="flex md:flex-row flex-col gap-6 w-full">
                   {/* Card Number */}
@@ -60,6 +164,9 @@ export default function PaymentMethod() {
 
                       <input
                         type="text"
+                        name="cardNumber"
+                        value={formData.cardNumber}
+                        onChange={handleChange}
                         placeholder="1234 5678 9012 3456"
                         className="w-full bg-transparent font outline-none text-sm placeholder:text-gray-400"
                       />
@@ -74,6 +181,9 @@ export default function PaymentMethod() {
 
                     <input
                       type="text"
+                      name="cvv"
+                      value={formData.cvv}
+                      onChange={handleChange}
                       placeholder="000"
                       className="w-full px-3 py-2.5 text-sm rounded-md border font border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                     />
@@ -90,6 +200,9 @@ export default function PaymentMethod() {
 
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       placeholder="joe"
                       className="w-full px-3 py-2.5 text-sm rounded-md border font border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                     />
@@ -103,28 +216,34 @@ export default function PaymentMethod() {
 
                     <input
                       type="text"
+                      name="expiry"
+                      value={formData.expiry}
+                      onChange={handleChange}
                       placeholder="00/23"
                       className="w-full px-3 py-2.5 text-sm font rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                     />
                   </div>
                 </div>
+                {/* Button */}
+                <div className="flex gap-3 md:justify-start justify-center my-8">
+                  <button
+                    type="submit"
+                    className="btn-primary py-2.5 flex justify-center items-center gap-2 text-white rounded-2xl cursor-pointer hover:btn px-6 transition-transform duration-300 ease-in-out hover:scale-105"
+                  >
+                    {" "}
+                    <span className="font"> Add Card</span>
+                    <Icon icon="material-symbols:add-rounded" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setModalClosed(!modalClosed)}
+                    className="btn-secondary font py-3 w-auto text-white rounded-2xl cursor-pointer hover:btn  transition-transform px-8 duration-300 ease-in-out hover:scale-105"
+                  >
+                    {" "}
+                    Cancel
+                  </button>
+                </div>
               </form>
-            </div>
-
-            {/* Button */}
-            <div className="flex gap-3 my-8">
-              <button className="btn-primary py-2.5 flex justify-center items-center gap-2 text-white rounded-2xl cursor-pointer hover:btn px-6 transition-transform duration-300 ease-in-out hover:scale-105">
-                {" "}
-                <span className="font"> Add Card</span>
-                <Icon icon="material-symbols:add-rounded" />
-              </button>
-              <button
-                onClick={() => setModalClosed(!modalClosed)}
-                className="btn-secondary font py-3 w-auto text-white rounded-2xl cursor-pointer hover:btn  transition-transform px-8 duration-300 ease-in-out hover:scale-105"
-              >
-                {" "}
-                Cancel
-              </button>
             </div>
           </div>
         </Modal>
