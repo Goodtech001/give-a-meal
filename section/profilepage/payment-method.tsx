@@ -8,6 +8,7 @@ type Card = {
   name: string;
   last4: string;
   expiry: string;
+  active: boolean;
 };
 
 type FormData = {
@@ -67,15 +68,20 @@ export default function PaymentMethod() {
       name: formData.name,
       last4: formData.cardNumber.slice(-4),
       expiry: formData.expiry,
+      active: true,
     };
 
     setCards((prev) => {
-      const updated = [...prev, newCard];
+      const updatedCards = prev.map((card) => ({
+        ...card,
+        active: false, // remove active from others
+      }));
 
-      // ✅ persist
-      localStorage.setItem("cards", JSON.stringify(updated));
+      const newList = [...updatedCards, newCard];
 
-      return updated;
+      localStorage.setItem("cards", JSON.stringify(newList));
+
+      return newList;
     });
 
     // ✅ reset form
@@ -88,6 +94,29 @@ export default function PaymentMethod() {
 
     // ✅ close modal (optional UX)
     setModalClosed(true);
+  };
+
+  const handleSelectCard = (id: number) => {
+    setCards((prev) => {
+      const updated = prev.map((card) => ({
+        ...card,
+        active: card.id === id,
+      }));
+
+      localStorage.setItem("cards", JSON.stringify(updated));
+
+      return updated;
+    });
+  };
+
+  const handleDeleteCard = (id: number) => {
+    setCards((prev) => {
+      const updated = prev.filter((card) => card.id !== id);
+
+      localStorage.setItem("cards", JSON.stringify(updated));
+
+      return updated;
+    });
   };
 
   return (
@@ -105,7 +134,10 @@ export default function PaymentMethod() {
 
       {cards.map((card) => (
         <div key={card.id} className="flex items-center gap-4 pb-5">
-          <div className="flex justify-between items-center gap-24 px-5 pb-11 pt-5 w-fit border border-gray-300 rounded-2xl">
+          <div
+            onClick={() => handleSelectCard(card.id)}
+            className="flex justify-between items-center gap-24 px-5 pb-11 pt-5 w-fit border border-gray-300 rounded-2xl"
+          >
             <div className="flex gap-3 items-center">
               <Icon icon="logos:mastercard" className="text-3xl shrink-0" />
 
@@ -120,13 +152,16 @@ export default function PaymentMethod() {
               </div>
             </div>
 
-            <div className="w-4 h-4 bg-[#FF8F07] rounded-full shrink-0" />
+            {/* ACTIVE DOT */}
+            {card.active ? (
+              <div className="w-4 h-4 bg-[#FF8F07] rounded-full shrink-0" />
+            ) : (
+              <div className="w-4 h-4 bg-gray-300 rounded-full shrink-0" />
+            )}
           </div>
 
           <button
-            onClick={() =>
-              setCards((prev) => prev.filter((c) => c.id !== card.id))
-            }
+            onClick={() => handleDeleteCard(card.id)}
             className="cursor-pointer"
           >
             <Icon
