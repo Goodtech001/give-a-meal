@@ -1,7 +1,7 @@
 "use client";
 import { Icon } from "@iconify/react";
 import Modal from "@/components/modal";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 type Card = {
   id: number;
@@ -141,6 +141,9 @@ export default function PaymentMethod() {
 
       return updated;
     });
+
+    // ✅ close modal (optional UX)
+    setModalClosed2(true);
   };
 
   return (
@@ -202,10 +205,6 @@ export default function PaymentMethod() {
           {/* DELETE BUTTON */}
           <button
             onClick={() => setModalClosed2(!modalClosed2)}
-            // onClick={(e) => {
-            //   e.stopPropagation(); // Prevents card selection when deleting
-            //   handleDeleteCard(card.id);
-            // }}
             className="cursor-pointer p-2 hover:bg-red-50 rounded-full transition-colors shrink-0"
           >
             <Icon
@@ -222,18 +221,39 @@ export default function PaymentMethod() {
               parentClassName="!py-6 md:!py-10  !items-start flex items-center justify-center"
               className="!w-11/12 md:!w-fit"
             >
-              <div className="w-full rounded-2xl bg-white p-6 shadow-2xl md:min-w-[40rem] md:p-8">
-                {/* Header */}
-                <div className="font text-[#0F172A] font-bold text-xl">
-                  <h1>Add New Card</h1>
-                </div>
-                {/* border */}
-                <div className="py-4">
-                  <hr className="text-gray-300" />
-                </div>
+              <div className="max-w-md w-full rounded-2xl bg-white p-6 shadow-2xl md:p-8">
+                <div className="flex flex-col items-center text-center">
+                  <h1 className="text-[#00304C] text-2xl font-bold px-4">
+                    Are you sure you want to delete this card?
+                  </h1>
 
-                {/* Content */}
-                <div className="flex flex-col items-center text-center "></div>
+                  {/* The visible border */}
+                  <div className="w-full py-6">
+                    <div className="h-[1px] w-full bg-gray-200" />
+                  </div>
+
+                  {/* Buttons - Made responsive so they don't overlap */}
+                  <div className="flex flex-row gap-3 w-full justify-center">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDeleteCard(card.id);
+                      }}
+                      type="button"
+                      className="btn-primary flex-1 py-3 text-white rounded-xl cursor-pointer transition-transform duration-300 hover:scale-105"
+                    >
+                      Yes, Delete
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={() => setModalClosed2(!modalClosed2)}
+                      className="btn-secondary flex-1 py-3 text-white rounded-xl cursor-pointer transition-transform duration-300 hover:scale-105"
+                    >
+                      No, Cancel
+                    </button>
+                  </div>
+                </div>
               </div>
             </Modal>
           </div>
