@@ -41,7 +41,7 @@ export default function ProfilePage() {
               className={`flex-shrink-0 md:text-base text-sm font cursor-pointer hover:text-[#00304C] text-[#00304C]
           ${
             activeTab === index
-              ? "font text-[#00304C] border border-[#00304C] py-2.5 md:px-10 px-5 rounded-lg"
+              ? "font text-[#00304C] border border-[#00304C] py-3 md:px-10 px-5 rounded-lg"
               : ""
           }`}
             >

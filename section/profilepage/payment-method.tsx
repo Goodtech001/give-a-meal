@@ -150,12 +150,12 @@ export default function PaymentMethod() {
     <div className="">
       <div className="w-full max-w-full  h-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0">
         {cards.length === 0 ? (
-          <h1 className="font text-lg text-text pb-10">
+          <h1 className="font text-lg text-text ">
             You don’t have any payment method saved. Add payment method to
             donate faster.
           </h1>
         ) : (
-          <h1 className="font text-xl text-text pb-10">
+          <h1 className="font text-lg text-text pb-10">
             Select your preferred payment method.
           </h1>
         )}
