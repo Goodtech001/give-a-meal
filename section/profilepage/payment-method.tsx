@@ -20,7 +20,8 @@ type FormData = {
 
 export default function PaymentMethod() {
   // ✅ UI STATE
-  const [modalClosed, setModalClosed] = useState(true);
+  const [modalClosed1, setModalClosed1] = useState(true);
+  const [modalClosed2, setModalClosed2] = useState(true);
 
   // ✅ CARDS STATE (load from localStorage)
   const [cards, setCards] = useState<Card[]>(() => {
@@ -116,7 +117,7 @@ export default function PaymentMethod() {
     });
 
     // ✅ close modal (optional UX)
-    setModalClosed(true);
+    setModalClosed1(true);
   };
 
   const handleSelectCard = (id: number) => {
@@ -200,10 +201,11 @@ export default function PaymentMethod() {
 
           {/* DELETE BUTTON */}
           <button
-            onClick={(e) => {
-              e.stopPropagation(); // Prevents card selection when deleting
-              handleDeleteCard(card.id);
-            }}
+            onClick={() => setModalClosed2(!modalClosed2)}
+            // onClick={(e) => {
+            //   e.stopPropagation(); // Prevents card selection when deleting
+            //   handleDeleteCard(card.id);
+            // }}
             className="cursor-pointer p-2 hover:bg-red-50 rounded-full transition-colors shrink-0"
           >
             <Icon
@@ -211,12 +213,36 @@ export default function PaymentMethod() {
               className="text-xl md:text-2xl text-text hover:text-red-500"
             />
           </button>
+
+          {/* DELETE CONFIRMATION MODAL */}
+          <div>
+            <Modal
+              closeModal={() => setModalClosed2(!modalClosed2)}
+              isModalClosed={modalClosed2}
+              parentClassName="!py-6 md:!py-10  !items-start flex items-center justify-center"
+              className="!w-11/12 md:!w-fit"
+            >
+              <div className="w-full rounded-2xl bg-white p-6 shadow-2xl md:min-w-[40rem] md:p-8">
+                {/* Header */}
+                <div className="font text-[#0F172A] font-bold text-xl">
+                  <h1>Add New Card</h1>
+                </div>
+                {/* border */}
+                <div className="py-4">
+                  <hr className="text-gray-300" />
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col items-center text-center "></div>
+              </div>
+            </Modal>
+          </div>
         </div>
       ))}
 
       <div className="flex justify-start mt-10">
         <button
-          onClick={() => setModalClosed(!modalClosed)}
+          onClick={() => setModalClosed1(!modalClosed1)}
           type="submit"
           className="btn-secondary  flex justify-center items-center font gap-2 md:w-auto md:px-15 px-5 px-0 py-4 rounded-xl text-lg text-white cursor-pointer 
   transition-transform transition-colors duration-300 font ease-in-out 
@@ -227,8 +253,8 @@ export default function PaymentMethod() {
         </button>
         {/* Modal */}
         <Modal
-          closeModal={() => setModalClosed(!modalClosed)}
-          isModalClosed={modalClosed}
+          closeModal={() => setModalClosed1(!modalClosed1)}
+          isModalClosed={modalClosed1}
           parentClassName="!py-6 md:!py-10  !items-start flex items-center justify-center"
           className="!w-11/12 md:!w-fit"
         >
@@ -337,7 +363,7 @@ export default function PaymentMethod() {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setModalClosed(!modalClosed)}
+                    onClick={() => setModalClosed1(!modalClosed1)}
                     className="btn-secondary font py-3 w-auto text-white rounded-2xl cursor-pointer hover:btn  transition-transform px-8 duration-300 ease-in-out hover:scale-105"
                   >
                     {" "}
