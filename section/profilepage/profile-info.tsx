@@ -16,7 +16,7 @@ const ReactSelect = dynamic(() => import("react-select"), {
 export default function ProfileInfo() {
   const [modalClosed, setModalClosed] = useState(true);
   return (
-    <div>
+    <div className="">
       <form className="w-full max-w-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0 space-y-16">
         {/* nick name */}
         <div className="w-full">
@@ -228,6 +228,8 @@ export default function ProfileInfo() {
           </button>
         </div>
       </form>
+      <div className="absolute md:block hidden top-0 -left-20 w-10 h-28 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute  md:block hidden  bottom-30 -right-5 w-10 h-28 bg-blue-400 rounded-full blur-2xl opacity-10"></div>
     </div>
   );
 }
