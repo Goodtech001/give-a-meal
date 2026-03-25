@@ -67,10 +67,10 @@ export default function MonthlyGiving() {
           {campaigns.map((campaign) => (
             <div
               key={campaign.id}
-              className="flex items-center gap-10 w-full max-w-3xl"
+              className="flex  md:items-center md:gap-10 gap-5 w-full max-w-3xl"
             >
               {/* DOT */}
-              <div className="w-3 h-3 md:w-4 md:h-4 bg-[#FF8F07] rounded-full shrink-0 shadow-sm mt-2" />
+              <div className="w-5 h-5 md:w-4 md:h-4 bg-[#FF8F07] rounded-full shrink-0 shadow-sm mt-2" />
 
               {/* CARD */}
               <MonthlyGivingCard campaign={campaign} />
