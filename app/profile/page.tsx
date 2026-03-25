@@ -54,18 +54,23 @@ export default function ProfilePage() {
 
         {/* ===================== TAB CONTENT SLIDER ===================== */}
         {/* Sliding content controlled by activeTab */}
-        <div className="pb-10 w-full ">
-          {/* Viewport */}
-          <div className="container mx-auto overflow-hidden w-full h-screen">
-            {/* Sliding Track */}
+
+        <div className="pb-10 w-full">
+          {/* Viewport - Remove h-screen, let content decide height */}
+          <div className="container mx-auto overflow-hidden w-full">
+            {/* Sliding Track - Add items-start */}
             <div
-              className="flex transition-transform duration-500 ease-in-out"
+              className="flex transition-transform duration-500 ease-in-out items-start"
               style={{ transform: `translateX(-${activeTab * 100}%)` }}
             >
               {tabs.map((tab, index) => (
                 <div
                   key={index}
-                  className="w-full h-full flex-shrink-0 px-4 box-border overflow-y-auto scrollbar-thin"
+                  className={`w-full flex-shrink-0 px-4 box-border transition-opacity duration-300 ${
+                    activeTab === index
+                      ? "opacity-100 h-auto"
+                      : "opacity-0 h-0 overflow-hidden"
+                  }`}
                 >
                   {tab.content}
                 </div>

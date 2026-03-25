@@ -27,7 +27,7 @@ const campaigns = [
 export default function MonthlyGiving() {
   const [isOn, setIsOn] = useState(false);
   return (
-    <div className="w-full max-w-full  h-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0">
+    <div className="w-full max-w-full   h-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0">
       <div className="flex justify-center items-center flex-col text-center mx-auto">
         <h1 className="font text-lg text-text ">
           Manage your givings to the causes you’re supporting.
