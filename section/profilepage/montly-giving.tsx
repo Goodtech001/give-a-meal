@@ -2,6 +2,7 @@
 import { useState } from "react";
 import MonthlyGivingCard from "@/components/montly-giving-card";
 import Modal from "@/components/modal";
+import { Icon } from "@iconify/react";
 
 const campaigns = [
   {
@@ -27,11 +28,11 @@ const campaigns = [
 export default function MonthlyGiving() {
   const [isOn, setIsOn] = useState(false);
   const [modalClosed1, setModalClosed1] = useState(true);
+  const [selectedAmount, setSelectedAmount] = useState<string>("30,000");
 
   const handleToggleAndClose = () => {
     setIsOn(!isOn);
-    setModalClosed1(!modalClosed1); // Usually you want to explicitly close the modal
-    console.log("Switch toggled and Modal closed!");
+    setModalClosed1(!modalClosed1);
   };
   return (
     <div className="w-full max-w-full   h-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0">
@@ -67,19 +68,89 @@ export default function MonthlyGiving() {
                 parentClassName="!py-6 md:!py-10  !items-start flex items-center justify-center"
                 className="!w-11/12 md:!w-fit"
               >
-                <div className="w-full rounded-2xl bg-white p-6 shadow-2xl md:min-w-[40rem] md:p-8">
+                <div className="w-full rounded-xl bg-white shadow-2xl md:min-w-[25rem]  border-2 border-[#0D7FC1]">
                   {/* Header */}
-                  <div className="font text-[#0F172A] font-bold text-xl">
-                    <h1>Add New Card</h1>
+                  <div className="font bg-[#0D7FC1] p-6  text-center rounded-b-2xl text-white text-lg">
+                    <h1>Give Monthly</h1>
                   </div>
                   {/* border */}
-                  <div className="py-4">
+                  {/* <div className="py-4">
                     <hr className="text-gray-300" />
-                  </div>
+                  </div> */}
 
                   {/* Content */}
-                  <div className="flex flex-col items-center text-center ">
-                    {/* Input */}
+                  <div className="flex flex-col items-center text-center w-full p-5">
+                    {/* curency */}
+                    <div className="flex items-center w-full gap-5">
+                      <div className="flex items-center justify-center gap-1 bg-[#0D7FC1] p-3 rounded-md">
+                        <p className="font text-white text-base">NGN</p>
+                        <Icon
+                          icon="bi:chevron-down"
+                          width="18"
+                          height="18"
+                          className="text-white"
+                        />
+                      </div>
+                      <p className="font text-base">
+                        30,000 will feed 300 people
+                      </p>
+                    </div>
+                    {/* amount */}
+                    <div className="flex items-center flex-col gap-4">
+                      {/* ROW 1: Your first three buttons */}
+                      <div className="flex items-center gap-2 pt-5">
+                        {["30,000", "15,000", "9,000"].map((amt) => (
+                          <div
+                            key={amt}
+                            onClick={() => setSelectedAmount(amt)}
+                            className={`border cursor-pointer py-2 px-3.5 rounded-md font transition-all duration-200 ${
+                              selectedAmount === amt
+                                ? "border-[#0D7FC1] ring-1 ring-[#0D7FC1] "
+                                : "border-gray-300 hover:border-gray-400"
+                            }`}
+                          >
+                            <p
+                              className={`text-base ${selectedAmount === amt ? "text-[#00304c] font-semibold" : ""}`}
+                            >
+                              {amt} NGN
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* ROW 2: Your bottom button and the Input */}
+                      <div className="flex items-center w-full gap-2">
+                        <div
+                          onClick={() => setSelectedAmount("5,000")}
+                          className={`border cursor-pointer py-2 px-3.5 font rounded-md transition-all duration-200 ${
+                            selectedAmount === "5,000"
+                              ? "border-[#0D7FC1] ring-1 ring-[#0D7FC1]"
+                              : "border-gray-300 hover:border-gray-400"
+                          }`}
+                        >
+                          <p
+                            className={`text-base ${selectedAmount === "5,000" ? "text-[#00304c] font-semibold" : ""}`}
+                          >
+                            5,000 NGN
+                          </p>
+                        </div>
+
+                        {/* Custom Input for "Other" Amount */}
+                        <input
+                          type="number"
+                          placeholder="Custom Amount"
+                          onChange={(e) => setSelectedAmount(e.target.value)}
+                          className={`w-61 px-3 py-2.5 text-sm rounded-md border font transition-all focus:outline-none ${
+                            // If the user types in here, give it a blue border too!
+                            !["30,000", "15,000", "9,000", "5,000"].includes(
+                              selectedAmount,
+                            ) && selectedAmount !== ""
+                              ? "border-[#0D7FC1] ring-1 ring-[#0D7FC1]"
+                              : "border-gray-400"
+                          }`}
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Modal>
