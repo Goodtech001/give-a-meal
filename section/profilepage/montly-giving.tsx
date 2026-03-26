@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-
 import MonthlyGivingCard from "@/components/montly-giving-card";
+import Modal from "@/components/modal";
 
 const campaigns = [
   {
@@ -26,6 +26,13 @@ const campaigns = [
 
 export default function MonthlyGiving() {
   const [isOn, setIsOn] = useState(false);
+  const [modalClosed1, setModalClosed1] = useState(true);
+
+  const handleToggleAndClose = () => {
+    setIsOn(!isOn);
+    setModalClosed1(!modalClosed1); // Usually you want to explicitly close the modal
+    console.log("Switch toggled and Modal closed!");
+  };
   return (
     <div className="w-full max-w-full   h-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0">
       <div className="flex justify-center items-center flex-col text-center mx-auto">
@@ -43,7 +50,7 @@ export default function MonthlyGiving() {
           <div className="flex items-center ">
             {/* THE SWITCH TRACK */}
             <div
-              onClick={() => setIsOn(!isOn)}
+              onClick={handleToggleAndClose}
               className={`relative w-13 h-6 flex items-center rounded-full p-1 cursor-pointer transition-colors duration-300 ease-in-out ${
                 isOn ? "bg-[#FF8F07]" : "bg-gray-300"
               }`}
@@ -54,6 +61,28 @@ export default function MonthlyGiving() {
                   isOn ? "translate-x-7" : "translate-x-0"
                 }`}
               />
+              <Modal
+                closeModal={() => setModalClosed1(!modalClosed1)}
+                isModalClosed={modalClosed1}
+                parentClassName="!py-6 md:!py-10  !items-start flex items-center justify-center"
+                className="!w-11/12 md:!w-fit"
+              >
+                <div className="w-full rounded-2xl bg-white p-6 shadow-2xl md:min-w-[40rem] md:p-8">
+                  {/* Header */}
+                  <div className="font text-[#0F172A] font-bold text-xl">
+                    <h1>Add New Card</h1>
+                  </div>
+                  {/* border */}
+                  <div className="py-4">
+                    <hr className="text-gray-300" />
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-col items-center text-center ">
+                    {/* Input */}
+                  </div>
+                </div>
+              </Modal>
             </div>
           </div>
         </div>
