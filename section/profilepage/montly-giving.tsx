@@ -3,6 +3,7 @@ import { useState } from "react";
 import MonthlyGivingCard from "@/components/montly-giving-card";
 import Modal from "@/components/modal";
 import { Icon } from "@iconify/react";
+import Link from "next/link";
 
 const campaigns = [
   {
@@ -149,6 +150,17 @@ export default function MonthlyGiving() {
                               : "border-gray-400"
                           }`}
                         />
+                      </div>
+                      <div className="w-full">
+                        <button
+                          onClick={() => setModalClosed1(!modalClosed1)}
+                          type="submit"
+                          className="btn-secondary w-full md:px-15 px-5 px-0 py-4 rounded-xl text-lg text-white cursor-pointer 
+  transition-transform transition-colors duration-300 font ease-in-out 
+  hover:scale-105"
+                        >
+                          Donate
+                        </button>
                       </div>
                     </div>
                   </div>
