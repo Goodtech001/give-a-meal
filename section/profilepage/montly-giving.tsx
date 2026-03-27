@@ -81,37 +81,38 @@ export default function MonthlyGiving() {
 
                   {/* Content */}
                   <div className="flex flex-col items-center text-center w-full p-5">
-                    {/* curency */}
-                    <div className="flex items-center w-full gap-5">
-                      <div className="flex items-center justify-center gap-1 bg-[#0D7FC1] p-3 rounded-md">
-                        <p className="font text-white text-base">NGN</p>
-                        <Icon
-                          icon="bi:chevron-down"
-                          width="18"
-                          height="18"
-                          className="text-white"
-                        />
+                    {/* currency */}
+                    <div className="flex items-center w-full gap-3 md:gap-5">
+                      <div className="flex items-center justify-center gap-1 bg-[#0D7FC1] px-3 py-2 rounded-md">
+                        <p className="text-white text-sm md:text-base">NGN</p>
+                        <Icon icon="bi:chevron-down" className="text-white" />
                       </div>
-                      <p className="font text-base">
+
+                      <p className="text-sm md:text-base font text-left">
                         30,000 will feed 300 people
                       </p>
                     </div>
+
                     {/* amount */}
-                    <div className="flex items-center flex-col gap-4">
-                      {/* ROW 1: Your first three buttons */}
-                      <div className="flex items-center gap-2 pt-5">
+                    <div className="flex flex-col gap-4 w-full mt-4">
+                      {/* ROW 1 */}
+                      <div className="grid grid-cols-3 gap-2">
                         {["30,000", "15,000", "9,000"].map((amt) => (
                           <div
                             key={amt}
                             onClick={() => setSelectedAmount(amt)}
-                            className={`border cursor-pointer py-2 px-3.5 rounded-md font transition-all duration-200 ${
+                            className={`w-full text-center border cursor-pointer py-2 rounded-md transition-all ${
                               selectedAmount === amt
-                                ? "border-[#0D7FC1] ring-1 ring-[#0D7FC1] "
-                                : "border-gray-300 hover:border-gray-400"
+                                ? "border-[#0D7FC1] ring-1 ring-[#0D7FC1]"
+                                : "border-gray-300"
                             }`}
                           >
                             <p
-                              className={`text-base ${selectedAmount === amt ? "text-[#00304c] font-semibold" : ""}`}
+                              className={`text-sm md:text-base font ${
+                                selectedAmount === amt
+                                  ? "text-[#00304c] font-semibold font"
+                                  : ""
+                              }`}
                             >
                               {amt} NGN
                             </p>
@@ -119,30 +120,34 @@ export default function MonthlyGiving() {
                         ))}
                       </div>
 
-                      {/* ROW 2: Your bottom button and the Input */}
-                      <div className="flex items-center w-full gap-2">
+                      {/* ROW 2 */}
+                      <div className="grid grid-cols-2 gap-2 w-full">
+                        {/* 5k button */}
                         <div
                           onClick={() => setSelectedAmount("5,000")}
-                          className={`border cursor-pointer py-2 px-3.5 font rounded-md transition-all duration-200 ${
+                          className={`w-full text-center border cursor-pointer py-2 rounded-md transition-all ${
                             selectedAmount === "5,000"
                               ? "border-[#0D7FC1] ring-1 ring-[#0D7FC1]"
-                              : "border-gray-300 hover:border-gray-400"
+                              : "border-gray-300"
                           }`}
                         >
                           <p
-                            className={`text-base ${selectedAmount === "5,000" ? "text-[#00304c] font-semibold" : ""}`}
+                            className={`text-sm md:text-base font ${
+                              selectedAmount === "5,000"
+                                ? "text-[#00304c] font-semibold font"
+                                : ""
+                            }`}
                           >
                             5,000 NGN
                           </p>
                         </div>
 
-                        {/* Custom Input for "Other" Amount */}
+                        {/* INPUT */}
                         <input
                           type="number"
                           placeholder="Custom Amount"
                           onChange={(e) => setSelectedAmount(e.target.value)}
-                          className={`w-61 px-3 py-2.5 text-sm rounded-md border font transition-all focus:outline-none ${
-                            // If the user types in here, give it a blue border too!
+                          className={`w-full px-3 py-2 font text-sm rounded-md border transition-all focus:outline-none ${
                             !["30,000", "15,000", "9,000", "5,000"].includes(
                               selectedAmount,
                             ) && selectedAmount !== ""
@@ -151,17 +156,15 @@ export default function MonthlyGiving() {
                           }`}
                         />
                       </div>
-                      <div className="w-full">
-                        <button
-                          onClick={() => setModalClosed1(!modalClosed1)}
-                          type="submit"
-                          className="btn-secondary w-full md:px-15 px-5 px-0 py-4 rounded-xl text-lg text-white cursor-pointer 
-  transition-transform transition-colors duration-300 font ease-in-out 
-  hover:scale-105"
-                        >
-                          Donate
-                        </button>
-                      </div>
+
+                      {/* BUTTON */}
+                      <button
+                        onClick={() => setModalClosed1(!modalClosed1)}
+                        type="button"
+                        className="btn-secondary w-full py-3 md:py-4 rounded-xl text-base md:text-lg text-white transition hover:scale-105"
+                      >
+                        Donate
+                      </button>
                     </div>
                   </div>
                 </div>
