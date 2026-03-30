@@ -4,6 +4,7 @@ import Subscribe from "@/layout/subscribe";
 import TopNavBar from "@/layout/Topnavbar";
 import ImageSlider from "@/section/who-are-we/image-slider";
 import AboutGiveAMeal from "@/section/who-are-we/about-give-a-meal";
+import FAQ from "@/section/who-are-we/FAQ";
 
 function About() {
   return (
@@ -12,6 +13,7 @@ function About() {
       <AboutHero />
       <ImageSlider />
       <AboutGiveAMeal />
+      <FAQ />
       <Subscribe />
     </div>
   );
