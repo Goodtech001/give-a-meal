@@ -3,7 +3,6 @@ import { useState } from "react";
 import MonthlyGivingCard from "@/components/montly-giving-card";
 import Modal from "@/components/modal";
 import { Icon } from "@iconify/react";
-import Link from "next/link";
 
 const campaigns = [
   {
@@ -30,6 +29,10 @@ export default function MonthlyGiving() {
   const [isOn, setIsOn] = useState(false);
   const [modalClosed1, setModalClosed1] = useState(true);
   const [selectedAmount, setSelectedAmount] = useState<string>("30,000");
+  const [isOpen, setIsOpen] = useState(false);
+  const [currency, setCurrency] = useState("NGN");
+
+  const options = ["NGN", "USD", "ESPEES"];
 
   const handleToggleAndClose = () => {
     setIsOn(!isOn);
@@ -83,9 +86,46 @@ export default function MonthlyGiving() {
                   <div className="flex flex-col items-center text-center w-full p-5">
                     {/* currency */}
                     <div className="flex items-center w-full gap-3 md:gap-5">
-                      <div className="flex items-center justify-center gap-1 bg-[#0D7FC1] px-3 py-2 rounded-md">
-                        <p className="text-white text-sm md:text-base">NGN</p>
-                        <Icon icon="bi:chevron-down" className="text-white" />
+                      <div className="relative inline-block text-left">
+                        {/* THE MAIN BUTTON */}
+                        <div
+                          onClick={() => setIsOpen(!isOpen)}
+                          className="flex items-center justify-center gap-1 bg-[#0D7FC1] px-3 py-2 rounded-md cursor-pointer hover:bg-[#0b6ca5] transition-all"
+                        >
+                          <p className="text-white text-sm md:text-base font font-medium">
+                            {currency}
+                          </p>
+                          <Icon
+                            icon="bi:chevron-down"
+                            className={`text-white transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                          />
+                        </div>
+
+                        {/* THE DROPDOWN MENU */}
+                        {isOpen && (
+                          <>
+                            {/* Invisible backdrop to close the menu when clicking outside */}
+                            <div
+                              className="fixed inset-0 z-10"
+                              onClick={() => setIsOpen(false)}
+                            />
+
+                            <div className="absolute left-0 mt-2 w-24 bg-[#0D7FC1] border border-[#0D7FC1] rounded-md shadow-lg z-20 overflow-hidden">
+                              {options.map((opt) => (
+                                <div
+                                  key={opt}
+                                  onClick={() => {
+                                    setCurrency(opt);
+                                    setIsOpen(false);
+                                  }}
+                                  className="px-4 py-2 text-white text-sm md:text-base font-medium hover:bg-[#0b6ca5] font  cursor-pointer transition-colors"
+                                >
+                                  {opt}
+                                </div>
+                              ))}
+                            </div>
+                          </>
+                        )}
                       </div>
 
                       <p className="text-sm md:text-base font text-left">
@@ -114,7 +154,7 @@ export default function MonthlyGiving() {
                                   : ""
                               }`}
                             >
-                              {amt} NGN
+                              {amt} {currency}
                             </p>
                           </div>
                         ))}
@@ -138,7 +178,7 @@ export default function MonthlyGiving() {
                                 : ""
                             }`}
                           >
-                            5,000 NGN
+                            5,000 {currency}
                           </p>
                         </div>
 
