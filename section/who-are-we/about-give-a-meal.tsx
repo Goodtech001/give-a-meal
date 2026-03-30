@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function AboutGiveAMeal() {
   return (
-    <div className="container mx-auto md:pt-20 pt-10">
+    <div className="relative container mx-auto md:pt-20 pt-10">
       {/* first role */}
       <div className="grid grid-cols-12">
         <div className="flex justify-center w-full col-span-12 pb-6  md:hidden">
@@ -83,6 +83,8 @@ export default function AboutGiveAMeal() {
           </div>
         </div>
       </div>
+      <div className="absolute -top-20 -left-20 w-40 h-40 bg-blue-600 rounded-full blur-3xl opacity-20"></div>
+      <div className="absolute bottom-20 -right-20 w-40 h-40 bg-blue-600 rounded-full blur-2xl opacity-10"></div>
     </div>
   );
 }

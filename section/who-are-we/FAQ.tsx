@@ -33,7 +33,7 @@ export default function FAQ() {
   const [activeId, setActiveId] = useState<number | null>(null);
 
   return (
-    <div className="container mx-auto justify-center flex  pt-20 md:px-0 px-2">
+    <div className="relative container mx-auto justify-center flex  pt-20 md:px-0 px-2">
       <div className="border border-gray-400 rounded-2xl w-full max-w-3xl overflow-hidden">
         {/* HEADER */}
         <div className="border-b border-gray-400 p-4 flex justify-center">
@@ -82,6 +82,8 @@ export default function FAQ() {
           );
         })}
       </div>
+      <div className="absolute top-25 left-0 w-40 h-40 bg-blue-600 rounded-full blur-3xl md:block hidden opacity-20"></div>
+      <div className="absolute bottom-0 right-5 w-40 h-40 bg-blue-600 rounded-full md:block hidden blur-2xl opacity-10"></div>
     </div>
   );
 }
