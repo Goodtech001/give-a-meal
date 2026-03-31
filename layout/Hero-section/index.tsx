@@ -107,27 +107,27 @@ function HeroSection() {
                 <Image
                   src={HeroImg}
                   alt=""
-                  className="w-fit  object-cover rounded-xl relative z-50"
+                  className="w-lg  object-cover rounded-xl relative z-50"
                 />
 
                 {/* IMAGE 2 */}
                 <Image
                   src={HeroImg2}
                   alt=""
-                  className="w-40 absolute top-1/2 -right-10 -translate-y-1/2  z-10"
+                  className="w-50 absolute bottom-0 right-10 -translate-y-1/2  z-20"
                 />
                 {/* IMAGE 2 */}
                 <Image
                   src={HeroImg2}
                   alt=""
-                  className="w-40 absolute top-30 -right-10 -translate-y-1/2  z-10"
+                  className="w-50 absolute top-55 right-10 -translate-y-1/2  z-15"
                 />
 
                 {/* IMAGE 3 */}
                 <Image
                   src={HeroImg3}
                   alt=""
-                  className="w-36 absolute -top-6 right-5  z-10"
+                  className="w-36 absolute top-6 right-27  z-10"
                 />
               </div>
             </div>
