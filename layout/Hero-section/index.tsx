@@ -38,6 +38,7 @@ function HeroSection() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <>
       <AnimatePresence>
@@ -49,9 +50,39 @@ function HeroSection() {
         >
           <div className="container mx-auto pt-14">
             <div className="grid grid-cols-12  item-center">
+              {/* img mobile */}
+              <div className="relative w-full flex items-center justify-center md:hidden col-span-12  md:col-span-6 my-20 pr-14 ">
+                {images.map((img, index) => {
+                  // Determine the "State" of this specific image
+                  const isActive = index === activeIndex; // The Big One
+                  const isNext = index === (activeIndex + 1) % images.length; // Slot 2
+                  // const isThird = index === (activeIndex + 2) % images.length; // Slot 3 (The missing 4th image!)
+                  const isPrev =
+                    index === (activeIndex - 1 + images.length) % images.length; // Slot 4 (The one that just left)
+
+                  return (
+                    <div
+                      key={index}
+                      className={`absolute transition-all duration-1000 ease-in-out overflow-visible 
+              ${isActive ? "z-50 w-[280px] h-[280px] opacity-100 translate-x-0 scale-100" : ""}
+              ${isNext ? "z-40 w-[255px] h-[255px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 -top-20 -left-14.5 " : ""}
+        
+              ${!isActive && !isNext && !isPrev ? "opacity-0 scale-0" : ""} 
+            `}
+                    >
+                      <Image
+                        src={img}
+                        alt="Charity"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  );
+                })}
+              </div>
               {/* hero text */}
-              <div className="md:col-span-6">
-                <div className="max-w-lg">
+              <div className="md:col-span-6 md:pl-8 col-span-12 md:pt-0 pt-20">
+                <div className="md:max-w-lg">
                   <p className="text-[#00304C] md:text-6xl font-medium text-5xl md:text-left text-center md:px-0 px-5 font ">
                     Make Impact With the Give A Meal App
                   </p>
@@ -66,7 +97,7 @@ function HeroSection() {
                   </p>
                 </div>
                 {/* button */}
-                <div className="my-10 flex flex-row gap-5 ">
+                <div className="md:my-15 flex flex-row gap-5 ">
                   {/* play store */}
                   <div>
                     <button className="flex cursor-pointer items-center gap-2 py-2 px-3 bg-black rounded-md hover:scale-105 transition-transform duration-300">
@@ -109,8 +140,8 @@ function HeroSection() {
                   </div>
                 </div>
               </div>
-              {/* image */}
-              <div className="relative w-full flex items-center  md:col-span-6 mb-10 pl-15 ">
+              {/* image */}2{" "}
+              <div className="relative w-full md:flex items-center hidden md:col-span-6 mb-20 pl-15  ">
                 {images.map((img, index) => {
                   // Determine the "State" of this specific image
                   const isActive = index === activeIndex; // The Big One
@@ -124,9 +155,9 @@ function HeroSection() {
                       key={index}
                       className={`absolute transition-all duration-1000 ease-in-out overflow-visible 
               ${isActive ? "z-50 w-[400px] h-[400px] opacity-100 translate-x-0 scale-100" : ""}
-              ${isNext ? "z-40 w-[200px] h-[200px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 top-12 left-40" : ""}
+              ${isNext ? "z-40 w-[200px] h-[200px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 top-15 left-45" : ""}
                 ${isThird ? "z-30 w-[155px] h-[155px] opacity-60 translate-x-[180px] -translate-y-10 scale-90 bottom-10 right-65" : ""}
-              ${isPrev ? "z-10 w-[145px] h-[145px] opacity-40 translate-x-[220px] translate-y-20 scale-70 bottom-17 left-30" : ""}
+              ${isPrev ? "z-10 w-[145px] h-[145px] opacity-40 translate-x-[220px] translate-y-20 scale-70 bottom-18 left-30" : ""}
               ${!isActive && !isNext && !isPrev ? "opacity-0 scale-0" : ""} 
             `}
                     >
