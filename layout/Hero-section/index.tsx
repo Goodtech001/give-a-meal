@@ -1,8 +1,10 @@
+"use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade } from "swiper/modules";
 import Image from "next/image";
-import React, { useRef } from "react";
-import play from "@/public/assets/images/store-android-en 1.png";
-import ios from "@/public/assets/images/store-ios-en 1.png";
-import phone from "@/public/assets/images/Home.png";
+import React, { useEffect, useRef, useState } from "react";
+import "swiper/css";
+
 import rectangle from "@/public/assets/images/Rectangle 4.jpeg";
 import {
   AnimatePresence,
@@ -16,6 +18,8 @@ import HeroImg2 from "@/public/assets/images/heroimg2.png";
 import HeroImg3 from "@/public/assets/images/heroimg3.png";
 import { Icon } from "@iconify/react";
 
+const images = [HeroImg, HeroImg2, HeroImg3, HeroImg3];
+
 function HeroSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -25,6 +29,15 @@ function HeroSection() {
     type: spring,
     stiffness: 150,
   };
+
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
       <AnimatePresence>
@@ -35,7 +48,7 @@ function HeroSection() {
           transition={transitionSpring}
         >
           <div className="container mx-auto pt-14">
-            <div className="grid grid-cols-12 item-center">
+            <div className="grid grid-cols-12  item-center">
               {/* hero text */}
               <div className="md:col-span-6">
                 <div className="max-w-lg">
@@ -43,7 +56,7 @@ function HeroSection() {
                     Make Impact With the Give A Meal App
                   </p>
                 </div>
-                <div className="max-w-lg">
+                <div className="max-w-xl">
                   <p className="text-[#00304CCC] font mt-5 leading-7 md:text-justify text-base md:px-0 px-10 text-center ">
                     Feeding someone in need is now as simple as a tap on your
                     screen. Help us build a world without hunger by downloading
@@ -97,33 +110,35 @@ function HeroSection() {
                 </div>
               </div>
               {/* image */}
-              <div className="md:col-span-6 relative ">
-                {/* MAIN IMAGE (NOW ON TOP) */}
-                <Image
-                  src={HeroImg}
-                  alt=""
-                  className="w-lg  object-cover rounded-xl relative z-50"
-                />
+              <div className="relative w-full flex items-center  md:col-span-6 mb-10 pl-15 ">
+                {images.map((img, index) => {
+                  // Determine the "State" of this specific image
+                  const isActive = index === activeIndex; // The Big One
+                  const isNext = index === (activeIndex + 1) % images.length; // Slot 2
+                  const isThird = index === (activeIndex + 2) % images.length; // Slot 3 (The missing 4th image!)
+                  const isPrev =
+                    index === (activeIndex - 1 + images.length) % images.length; // Slot 4 (The one that just left)
 
-                {/* IMAGE 2 */}
-                <Image
-                  src={HeroImg2}
-                  alt=""
-                  className="w-50 absolute bottom-0 right-10 -translate-y-1/2  z-20"
-                />
-                {/* IMAGE 2 */}
-                <Image
-                  src={HeroImg2}
-                  alt=""
-                  className="w-50 absolute top-55 right-10 -translate-y-1/2  z-15"
-                />
-
-                {/* IMAGE 3 */}
-                <Image
-                  src={HeroImg3}
-                  alt=""
-                  className="w-36 absolute top-6 right-27  z-10"
-                />
+                  return (
+                    <div
+                      key={index}
+                      className={`absolute transition-all duration-1000 ease-in-out overflow-visible 
+              ${isActive ? "z-50 w-[400px] h-[400px] opacity-100 translate-x-0 scale-100" : ""}
+              ${isNext ? "z-40 w-[200px] h-[200px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 top-12 left-40" : ""}
+                ${isThird ? "z-30 w-[155px] h-[155px] opacity-60 translate-x-[180px] -translate-y-10 scale-90 bottom-10 right-65" : ""}
+              ${isPrev ? "z-10 w-[145px] h-[145px] opacity-40 translate-x-[220px] translate-y-20 scale-70 bottom-17 left-30" : ""}
+              ${!isActive && !isNext && !isPrev ? "opacity-0 scale-0" : ""} 
+            `}
+                    >
+                      <Image
+                        src={img}
+                        alt="Charity"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -195,3 +210,48 @@ export default HeroSection;
 //             />
 //           </div>
 //         </div>
+
+// <div className="md:col-span-6 relative flex items-center ml-10 w-full text-center">
+{
+  /* MAIN IMAGE (NOW ON TOP) */
+}
+{
+  /* <Image
+      src={HeroImg}
+      alt=""
+      className="w-[420px]  object-cover rounded-xl mb-10 relative z-50"
+    /> */
+}
+
+{
+  /* IMAGE 2 */
+}
+{
+  /* <Image
+      src={HeroImg2}
+      alt=""
+      className="w-40 absolute -bottom-5 right-30 -translate-y-1/2  z-20"
+    /> */
+}
+{
+  /* IMAGE 2 */
+}
+{
+  /* <Image
+      src={HeroImg2}
+      alt=""
+      className="w-35 absolute top-55 right-25 -translate-y-1/2  z-15"
+    /> */
+}
+
+{
+  /* IMAGE 3 */
+}
+{
+  /* <Image
+      src={HeroImg3}
+      alt=""
+      className="w-30 absolute top-12 right-32  z-10"
+    />
+  </div>; */
+}
