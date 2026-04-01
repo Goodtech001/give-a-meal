@@ -38,7 +38,6 @@ function HeroSection() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
   return (
     <>
       <AnimatePresence>
@@ -100,19 +99,19 @@ function HeroSection() {
                 <div className="md:my-15 flex flex-row gap-5 ">
                   {/* play store */}
                   <div>
-                    <button className="flex cursor-pointer items-center gap-2 py-2 px-3 bg-black rounded-md hover:scale-105 transition-transform duration-300">
+                    <button className="flex cursor-pointer items-center gap-2 py-2 px-3 bg-black rounded-xl hover:scale-105 transition-transform duration-300">
                       <Icon
                         icon="logos:google-play-icon"
-                        className="w-9 h-9 shrink-0"
+                        className="w-8 h-8 shrink-0"
                       />
 
                       {/* Added items-start here */}
                       <span className="flex flex-col leading-tight items-start justify-start">
                         {/* Added text-left here */}
-                        <p className="text-[12px]  font text-gray-300 font-semibold text-left uppercase">
+                        <p className="text-[10px]  font text-gray-300 font-semibold text-left uppercase">
                           Get it on
                         </p>
-                        <p className="text-[20px]  font font-semibold text-white text-left">
+                        <p className="text-[18px]  font font-semibold text-white text-left">
                           Google Play
                         </p>
                       </span>
@@ -120,19 +119,19 @@ function HeroSection() {
                   </div>
                   {/* ios */}
                   <div>
-                    <button className="flex cursor-pointer items-center gap-2 py-2 px-3 bg-black rounded-md hover:scale-105 transition-transform duration-300">
+                    <button className="flex cursor-pointer items-center gap-2 py-2 px-3 bg-black rounded-xl hover:scale-105 transition-transform duration-300">
                       <Icon
                         icon="icomoon-free:appleinc"
-                        className="w-9 h-9 shrink-0 text-white"
+                        className="w-8 h-8 shrink-0 text-white"
                       />
 
                       {/* Added items-start here */}
                       <span className="flex flex-col leading-tight items-start justify-start">
                         {/* Added text-left here */}
-                        <p className="text-[9.5px] font text-gray-300 font-semibold text-left uppercase">
+                        <p className="text-[8px] font text-gray-300 font-semibold text-left uppercase">
                           Download on the
                         </p>
-                        <p className="text-[23px] font font-semibold text-white text-left">
+                        <p className="text-[20px] font font-semibold text-white text-left">
                           App Store
                         </p>
                       </span>
@@ -140,7 +139,7 @@ function HeroSection() {
                   </div>
                 </div>
               </div>
-              {/* image */}2{" "}
+              {/* image */}
               <div className="relative w-full md:flex items-center hidden md:col-span-6 mb-20 pl-15  ">
                 {images.map((img, index) => {
                   // Determine the "State" of this specific image
