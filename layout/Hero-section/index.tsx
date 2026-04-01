@@ -46,15 +46,10 @@ function HeroSection() {
                 <div className="max-w-lg">
                   <p className="text-[#00304CCC] font mt-5 leading-7 md:text-justify text-base md:px-0 px-10 text-center ">
                     Feeding someone in need is now as simple as a tap on your
-                    screen. With the Give A Meal app, you have the power to turn
-                    compassion into action instantly. Help us build a world
-                    without hunger by downloading the app and sharing a meal
-                    today. Every tap you make goes beyond a simple donation,it
-                    brings hope, nourishment, and relief to individuals and
-                    families who need it most. Together, we can create lasting
-                    impact, strengthen communities, and ensure that no one has
-                    to go to bed hungry. Every small act counts, and every tap
-                    truly makes a difference.
+                    screen. Help us build a world without hunger by downloading
+                    Give A Meal and sharing a meal today. Every tap makes a
+                    difference, bringing hope, nourishment, and support to
+                    people and families who need it most.
                   </p>
                 </div>
                 {/* button */}
