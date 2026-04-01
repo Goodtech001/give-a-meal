@@ -50,7 +50,7 @@ function HeroSection() {
           <div className="container mx-auto pt-14">
             <div className="grid grid-cols-12  item-center">
               {/* img mobile */}
-              <div className="relative w-full flex items-center justify-center md:hidden col-span-12  md:col-span-6 my-20 pr-14 ">
+              <div className="relative w-full flex items-center justify-center md:hidden col-span-12  md:col-span-6 mb-20 mt-30 pr-14 ">
                 {images.map((img, index) => {
                   // Determine the "State" of this specific image
                   const isActive = index === activeIndex; // The Big One
@@ -96,7 +96,7 @@ function HeroSection() {
                   </p>
                 </div>
                 {/* button */}
-                <div className="md:my-15 flex flex-row gap-5 ">
+                <div className="md:my-15 my-8 flex flex-row gap-5  w-full md:justify-start justify-center items-center">
                   {/* play store */}
                   <div>
                     <button className="flex cursor-pointer items-center gap-2 py-2 px-3 bg-black rounded-xl hover:scale-105 transition-transform duration-300">

@@ -168,7 +168,10 @@ function TopNavBar() {
                 <Icon icon="stash:signin" width="24" height="24" />
               </button>
 
-              <Link href={"/donate"} className="btnn border border-transparent py-2 px-4 text-white bg-[#FF8F07] rounded-full hidden md:flex">
+              <Link
+                href={"/donate"}
+                className="btnn border border-transparent py-2 px-4 text-white bg-[#FF8F07] rounded-full hidden md:flex"
+              >
                 Donate
               </Link>
             </div>
@@ -186,7 +189,7 @@ function TopNavBar() {
 
       {/* ===================== MOBILE SLIDE ===================== */}
       <div
-        className={`fixed inset-0 z-20 bg-dark/50 text-textcolor bg-white transition-all duration-500 ease-in-out md:hidden ${navOpen ? "visible clip-path-slide-top-down" : "invisible delay-200 clip-path-close"}`}
+        className={`fixed inset-0 z-80 bg-dark/50 text-textcolor bg-white transition-all duration-500 ease-in-out md:hidden ${navOpen ? "visible clip-path-slide-top-down" : "invisible delay-200 clip-path-close"}`}
       >
         <div
           className={`${navOpen ? "delay-200 clip-path-slide-top-down" : "clip-path-close"} h-full w-full bg-light px-2 py-3 duration-500`}
@@ -488,72 +491,71 @@ function TopNavBar() {
 
             {step === "otp" && (
               <div className="md:hidden block space-y-6">
-              <h1 className="text-center font text-3xl font-semibold">
-                Confirmation Code
-              </h1>
-              <p className="text-center text-sm font text-[#64748B]">
-                Provide the 4-digit confirmation code sent <br />
-                <span className=" font">sent wedr-----343@gmail.com </span>
-              </p>
+                <h1 className="text-center font text-3xl font-semibold">
+                  Confirmation Code
+                </h1>
+                <p className="text-center text-sm font text-[#64748B]">
+                  Provide the 4-digit confirmation code sent <br />
+                  <span className=" font">sent wedr-----343@gmail.com </span>
+                </p>
 
-              <div className="flex justify-center gap-3">
-                {otp.map((digit, index) => (
-                  <input
-                    key={index}
-                    ref={(el) => {
-                      inputsRef.current[index] = el;
-                    }}
-                    type="text"
-                    maxLength={1}
-                    value={digit}
-                    onChange={(e) => handleChange(e.target.value, index)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
-                    className="w-12 h-12 text-center text-xl font-semibold border-2 border-gray-300 rounded-lg focus:border-[#0D7FC1] outline-none"
-                  />
-                ))}
+                <div className="flex justify-center gap-3">
+                  {otp.map((digit, index) => (
+                    <input
+                      key={index}
+                      ref={(el) => {
+                        inputsRef.current[index] = el;
+                      }}
+                      type="text"
+                      maxLength={1}
+                      value={digit}
+                      onChange={(e) => handleChange(e.target.value, index)}
+                      onKeyDown={(e) => handleKeyDown(e, index)}
+                      className="w-12 h-12 text-center text-xl font-semibold border-2 border-gray-300 rounded-lg focus:border-[#0D7FC1] outline-none"
+                    />
+                  ))}
+                </div>
+
+                <div className="text-center space-y-2 space-x-1">
+                  <button
+                    onClick={() => setStep("email")}
+                    className="text-sm font"
+                  >
+                    Didn&apos;t recieve mail?
+                  </button>
+
+                  <button className="text-sm font text-[#0D7FC1]">
+                    Resend code ?
+                  </button>
+                </div>
+
+                <div className="flex justify-center md:px-38 px-8">
+                  <button
+                    onClick={handleVerify}
+                    className="flex justify-center font py-3 w-full rounded-3xl bg-[#0D7FC1] text-white"
+                  >
+                    Confirm
+                  </button>
+                </div>
               </div>
-
-              <div className="text-center space-y-2 space-x-1">
-                <button
-                  onClick={() => setStep("email")}
-                  className="text-sm font"
-                >
-                  Didn&apos;t recieve mail?
-                </button>
-
-                <button className="text-sm font text-[#0D7FC1]">
-                  Resend code ?
-                </button>
-              </div>
-
-              <div className="flex justify-center md:px-38 px-8">
-                <button
-                  onClick={handleVerify}
-                  className="flex justify-center font py-3 w-full rounded-3xl bg-[#0D7FC1] text-white"
-                >
-                  Confirm
-                </button>
-              </div>
-            </div>
             )}
 
-
             <p className="text-xs md:px-35 px-10 font text-center">
-            By signing up, you’re agreeing to our{" "}
-            <Link
-              href={"/"}
-              className="underline text-[#0D7FC1] cursor-pointer"
-            >
-              Privacy Policy
-            </Link>{" "}
-            and{" "}
-            <Link
-              href={"/"}
-              className="underline text-[#0D7FC1] cursor-pointer"
-            >
-              Terms Of Use
-            </Link>
-          </p>
+              By signing up, you’re agreeing to our{" "}
+              <Link
+                href={"/"}
+                className="underline text-[#0D7FC1] cursor-pointer"
+              >
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link
+                href={"/"}
+                className="underline text-[#0D7FC1] cursor-pointer"
+              >
+                Terms Of Use
+              </Link>
+            </p>
           </div>
         </div>
       </div>
