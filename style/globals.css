@@ -201,36 +201,3 @@ body {
 
 
 
-/* The container for the whole slider needs to show everything */
-.swiper {
-  overflow: visible !important;
-}
-
-/* 1. THE ACTIVE IMAGE (Middle & Big) */
-.swiper-slide-active {
-  z-index: 50;
-  transform: scale(1) translateX(0);
-  opacity: 1;
-}
-
-/* 2. THE PREVIOUS IMAGE (Move to the side & become small) */
-/* This stops it from sliding away and 'parks' it at the side */
-.swiper-slide-prev {
-  z-index: 20;
-  /* We use 'translateX' to push it to the right/left so it stays visible */
-  transform: scale(0.4) translateX(250%) !important;
-  opacity: 0.7;
-}
-
-/* 3. THE NEXT IMAGE (The one waiting to become big) */
-.swiper-slide-next {
-  z-index: 30;
-  transform: scale(0.6) translateX(120%) !important;
-  opacity: 0.8;
-}
-
-/* Smooth out all transitions */
-.swiper-slide {
-  transition: all 0.8s ease-in-out !important;
-}
-
