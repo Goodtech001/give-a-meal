@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import OurImpactImg from "@/public/assets/images/ourimpactimg.png";
 
 function Impact() {
   return (
@@ -49,23 +51,32 @@ function Impact() {
 
           <div className="flex justify-center md:py-0 py-6">
             <button className="flex justify-center btnn py-2 px-4 text-white font rounded-xl bg-[#0D7FC1] md:hidden mt-">
-            Read More
-          </button>
+              Read More
+            </button>
           </div>
         </div>
 
-        <div className="space-y-10">
-          <h1 className="font text-[#03324E] text-4xl font-semibold text-center">
-            Our ImpACT
-          </h1>
-          <p className="text-[#00304CCC] font md:text-left text-center">
-            Shared meals will provide hot meals, <br /> monthly food basket and
-            nutriton <br /> supplements to families in the <br /> Northern
-            Nigeria...
-          </p>
-          <button className="btnn py-2 px-4 text-white font rounded-xl bg-[#0D7FC1] hidden md:block">
-            Read More
-          </button>
+        <div className="relative w-full h-[320px] md:mb-0 mb-10  flex items-center justify-center">
+          {/* BACKGROUND IMAGE */}
+          <Image
+            src={OurImpactImg}
+            alt="impact"
+            fill
+            className="object-contain opacity-17 animate-spin [animation-duration:30s] [animation-timing-function:linear]"
+          />
+          <div className="space-y-10 absolute">
+            <h1 className="font text-[#03324E] md:text-5xl text-4xl font-semibold md:text-start text-center ">
+              Our ImpACT
+            </h1>
+            <p className="text-[#00304CCC] font md:text-left text-lg  text-center">
+              Shared meals will provide hot meals, <br /> monthly food basket
+              and nutriton <br /> supplements to families in the <br /> Northern
+              Nigeria...
+            </p>
+            <button className="btnn py-3 px-5 text-white font rounded-xl bg-[#0D7FC1] hidden md:block">
+              Read More
+            </button>
+          </div>
         </div>
       </div>
 
