@@ -17,7 +17,7 @@ export default function ProfileInfo() {
   const [modalClosed, setModalClosed] = useState(true);
   return (
     <div className="">
-      <form className="w-full max-w-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0 space-y-16">
+      <form className="w-full max-w-full md:max-w-full mx-auto md:mx-0 md:px-20 px-0 space-y-16 overflow-scroll relative">
         {/* nick name */}
         <div className="w-full">
           <div className="mt-2 flex gap-6 md:gap-20 items-center">
@@ -199,7 +199,7 @@ export default function ProfileInfo() {
         </div>
 
         {/* country */}
-        <div className="w-full pt-5">
+        <div className="w-full pt-5 ">
           <div className="mt-2 flex gap-6 md:gap-20 items-center">
             {/* LEFT LABEL - Stays exactly the same */}
             <div className="h-full flex justify-center items-center">
