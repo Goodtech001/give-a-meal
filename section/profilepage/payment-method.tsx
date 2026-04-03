@@ -168,7 +168,7 @@ export default function PaymentMethod() {
             {/* MAIN CARD BOX */}
             <div
               onClick={() => handleSelectCard(card.id)}
-              className="flex justify-between items-start gap-4 md:gap-24 px-4 md:px-8 pb-8 md:pb-11 pt-6 md:pt-8 flex-1 md:w-fit border border-gray-300 rounded-2xl cursor-pointer"
+              className="flex justify-between items-start gap-4 md:gap-24 px-5 md:px-9 pb-9 md:pb-12 pt-7 md:pt-9 flex-1 md:w-fit border border-gray-300 rounded-2xl cursor-pointer"
             >
               <div className="flex gap-3 items-start">
                 <div className="flex justify-start pt-1">
