@@ -296,7 +296,7 @@ function TopNavBar() {
         closeModal={closeModal}
         isModalClosed={isModalClosed}
       >
-        <div className="relative my-auto rounded-lg bg-light px-2 py-4 md:px-4 space-y-6">
+        <div className="relative my-auto   rounded-lg bg-light px-2 py-4 md:px-4 space-y-6">
           <button
             onClick={closeModal}
             className="absolute right-4 top-2 block rounded-lg text-[#0D7FC1] border-light/5 p-1.5 text-light cursor-pointer"
@@ -421,7 +421,7 @@ function TopNavBar() {
 
       {/* ===================== MOBILE SIGN-IN ===================== */}
       <div
-        className={`fixed inset-0 z-30 bg-white transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-80  bg-white transition-all duration-500 md:hidden ${
           showMobileAuth
             ? "visible clip-path-slide-top-down"
             : "invisible clip-path-close"
