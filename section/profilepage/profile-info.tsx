@@ -34,7 +34,7 @@ export default function ProfileInfo() {
               <input
                 type="text"
                 placeholder="Jehovah son"
-                className="w-full px-3 py-4 text-sm font rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                className="w-full px-3 py-4 text-[16px]  font rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
             </div>
           </div>
@@ -61,20 +61,20 @@ export default function ProfileInfo() {
                 <input
                   type="text"
                   placeholder="john"
-                  className="w-full px-3 py-4 text-sm rounded-md font border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                  className="w-full px-3 py-4 text-[16px] rounded-md font border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                 />
               </div>
 
               {/* LAST */}
               <div className="flex flex-col w-full">
-                <label className="text-[#00304C] text-base font font-bold font-semibold mb-2">
+                <label className="text-[#00304C]  text-base font font-bold font-semibold mb-2">
                   Last:
                 </label>
 
                 <input
                   type="text"
                   placeholder=" doe"
-                  className="w-full px-3 py-4 text-sm rounded-md border font border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                  className="w-full px-3 py-4 text-[16px]  rounded-md border font border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
                 />
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function ProfileInfo() {
               <input
                 type="email"
                 placeholder="johndoe@gmail.com"
-                className="w-full px-3 py-4 text-sm font rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
+                className="w-full px-3 py-4 text-[16px]  font rounded-md border border-gray-400 focus:outline-none focus:ring-1 focus:ring-[#00304c]"
               />
 
               {/* ICON (floating beside, not affecting layout) */}
