@@ -262,7 +262,7 @@ export function CountrySelect() {
       unstyled
       classNames={{
         control: () =>
-          "w-full px-3 py-4 text-sm rounded-md border border-gray-400 focus-within:ring-1 focus-within:ring-[#00304c]",
+          "w-full px-3 py-4 text-[16px] rounded-md border border-gray-400 focus-within:ring-1 focus-within:ring-[#00304c]",
         menu: () => "mt-2 border rounded-md shadow-lg bg-white",
         option: ({ isFocused }) =>
           `px-3 py-2 cursor-pointer ${isFocused ? "bg-gray-100" : ""}`,
