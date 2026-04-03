@@ -23,7 +23,7 @@ export default function ProfilePage() {
 
   const [activeTab, setActiveTab] = useState(0);
   return (
-    <div>
+    <div className="z-0">
       <ProfilePageHeroSection />
       <div className="pt-20">
         <h1 className="text-[#00304C] md:text-4xl text-3xl text-center  flex justify-center font">
@@ -57,7 +57,7 @@ export default function ProfilePage() {
 
         <div className="pb-10 w-full">
           {/* Viewport - Remove h-screen, let content decide height */}
-          <div className="container mx-auto overflow-hidden w-full">
+          <div className="container mx-auto md:overflow-hidden w-full">
             {/* Sliding Track - Add items-start */}
             <div
               className="flex transition-transform duration-500 ease-in-out items-start"

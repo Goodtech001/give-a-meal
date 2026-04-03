@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-undef */
 "use client";
-import React, { useRef, useState } from "react";
-import useTopnavbar, { leftMenu } from "./useTopnavbar";
+import React, { useEffect, useRef, useState } from "react";
+import useTopnavbar, { leftMenu, menu_type } from "./useTopnavbar";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import Logo from "@/components/logo";
@@ -12,6 +12,7 @@ import { useModal } from "@/components/modal/useModal";
 import Modal from "@/components/modal";
 import KingsChatButton from "@/components/kingschat-button";
 import GoogleButton from "@/components/google-button";
+import { createPortal } from "react-dom";
 
 function TopNavBar() {
   const {
@@ -421,13 +422,13 @@ function TopNavBar() {
 
       {/* ===================== MOBILE SIGN-IN ===================== */}
       <div
-        className={`fixed inset-0 z-80  bg-white transition-all duration-500 md:hidden ${
+        className={`fixed inset-0 z-[999]  bg-white transition-all duration-500 md:hidden ${
           showMobileAuth
             ? "visible clip-path-slide-top-down"
             : "invisible clip-path-close"
         }`}
       >
-        <div className="h-full w-full bg-light px-4 py-4 overflow-y-auto">
+        <div className="h-full w-full bg-light px-4 py-4 ">
           {/* CLOSE BUTTON */}
           <button
             onClick={() => setShowMobileAuth(false)}
@@ -559,8 +560,309 @@ function TopNavBar() {
           </div>
         </div>
       </div>
+
+      <NavOverlays
+        closeModal={closeModal}
+        navOpen={navOpen}
+        setNavOpen={setNavOpen}
+        showMobileAuth={showMobileAuth}
+        setShowMobileAuth={setShowMobileAuth}
+        step={step}
+        setStep={setStep}
+        otp={otp}
+        email={email}
+        setEmail={setEmail}
+        isModalClosed={isModalClosed}
+        handleContinue={handleContinue}
+        handleVerify={handleVerify}
+        handleChange={handleChange}
+        handleKeyDown={handleKeyDown}
+        inputsRef={inputsRef}
+        leftMenu={leftMenu}
+        subMenuClicked={subMenuClicked}
+        setSubMenuClicked={setSubMenuClicked}
+        navListRef={navListRef}
+      />
     </div>
   );
 }
 
 export default TopNavBar;
+
+interface NavOverlaysProps {
+  navOpen: boolean;
+  setNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  showMobileAuth: boolean;
+  setShowMobileAuth: React.Dispatch<React.SetStateAction<boolean>>;
+  step: string;
+  setStep: React.Dispatch<React.SetStateAction<string>>;
+  otp: string[];
+  email: string;
+  setEmail: (e: string) => void;
+  closeModal: () => void;
+  isModalClosed: boolean;
+  handleContinue: () => void;
+  handleVerify: () => void;
+  handleChange: (v: string, i: number) => void;
+  handleKeyDown: (e: React.KeyboardEvent<HTMLInputElement>, i: number) => void;
+  inputsRef: React.RefObject<(HTMLInputElement | null)[]>;
+  leftMenu: menu_type[];
+  subMenuClicked: string;
+  setSubMenuClicked: (s: string) => void;
+  navListRef: React.RefObject<HTMLUListElement | null>;
+}
+
+function NavOverlays(props: NavOverlaysProps) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  if (!mounted) return null;
+
+  const content = (
+    <>
+      {/* ===================== MOBILE SLIDE (NAV) ===================== */}
+      <div
+        className={`fixed inset-0 z-80 bg-dark/50 text-textcolor bg-white transition-all duration-500 ease-in-out md:hidden ${
+          props.navOpen
+            ? "visible clip-path-slide-top-down"
+            : "invisible delay-200 clip-path-close"
+        }`}
+      >
+        <div
+          className={`${props.navOpen ? "delay-200 clip-path-slide-top-down" : "clip-path-close"} h-full w-full bg-light px-2 py-3 duration-500`}
+        >
+          <button
+            onClick={() => props.setNavOpen(false)}
+            className="ml-auto justify-end flex"
+          >
+            <Icon icon="eva:close-fill" className="text-3xl" />
+          </button>
+          <div className="flex items-center justify-center">
+            <Logo variant="alt" className="w-24" />
+          </div>
+          <ul className="mt-8 space-y-10">
+            {props.leftMenu.map((menu, index) => (
+              <li
+                key={index}
+                onMouseEnter={() => props.setSubMenuClicked(menu.subPath || "")}
+                onMouseLeave={() => props.setSubMenuClicked("")}
+                className="relative flex justify-center font font-semibold text-[#00304C] text-xl"
+              >
+                <Link
+                  href={menu.path || ""}
+                  className="flex items-center gap-2 font-medium hover:underline space-y-4"
+                >
+                  {menu.title}
+                  {menu.subMenus && (
+                    <Icon
+                      icon="mynaui:chevron-down-solid"
+                      className="h-4 w-4"
+                    />
+                  )}
+                </Link>
+                {menu.subMenus && (
+                  <ol
+                    className={`absolute left-0 h-0 min-w-60 overflow-hidden rounded-md bg-light text-sm shadow ${props.subMenuClicked == menu.subPath && "!h-fit"}`}
+                  >
+                    {/* // eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+                    , @typescript-eslint/no-explicit-any,
+                    @typescript-eslint/no-explicit-any
+                    {menu.subMenus.map((subMenu, i: number) => (
+                      <li key={i}>
+                        <Link
+                          href={
+                            subMenu.external
+                              ? subMenu.path
+                              : menu.subPath + subMenu.path
+                          }
+                          target={subMenu.external ? "_blank" : "_self"}
+                          className="flex w-full items-center justify-between border-4 border-transparent px-3 py-2 text-textcolor hover:border-l-primary hover:bg-blue-100 hover:font-semibold hover:text-primary"
+                        >
+                          {subMenu.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+              </li>
+            ))}
+            {/* ... Social Icons and Bottom Buttons (Same as your original code) ... */}
+          </ul>
+        </div>
+      </div>
+
+      {/* ===================== DESKTOP SIGN IN MODAL ===================== */}
+      <Modal
+        className={`w-fu overflow-hidden bg-white rounded-2xl md:block hidden`}
+        // eslint-disable-next-line react-hooks/refs
+        closeModal={props.closeModal}
+        isModalClosed={props.isModalClosed}
+      >
+        <div className="relative my-auto rounded-lg bg-light px-2 py-4 md:px-4 space-y-6">
+          <button
+            onClick={props.closeModal}
+            className="absolute right-4 top-2 block rounded-lg text-[#0D7FC1] border-light/5 p-1.5 text-light cursor-pointer"
+          >
+            <Icon icon="iconoir:cancel" className="size-6 md:size-8" />
+          </button>
+          {/* Modal Step Content (Original Email/OTP logic) */}
+          <AuthContent {...props} />
+        </div>
+      </Modal>
+
+      {/* ===================== MOBILE SIGN-IN SLIDE ===================== */}
+      <div
+        className={`fixed inset-0 z-[999] bg-white transition-all duration-500 md:hidden ${
+          props.showMobileAuth
+            ? "visible clip-path-slide-top-down"
+            : "invisible clip-path-close"
+        }`}
+      >
+        <div className="h-full w-full bg-light px-4 py-4">
+          <button
+            onClick={() => props.setShowMobileAuth(false)}
+            className="ml-auto flex"
+          >
+            <Icon icon="eva:close-fill" className="text-3xl" />
+          </button>
+          <AuthContent {...props} />
+        </div>
+      </div>
+    </>
+  );
+
+  return createPortal(content, document.getElementById("modal-root")!);
+}
+
+// Sub-component to prevent repeating Auth Logic twice
+function AuthContent({
+  step,
+  setStep,
+  email,
+  setEmail,
+  otp,
+  inputsRef,
+  handleContinue,
+  handleChange,
+  handleKeyDown,
+  handleVerify,
+}: NavOverlaysProps) {
+  return (
+    <div className="relative my-auto rounded-lg bg-light px-2 py-4 md:px-4 space-y-6">
+      <div className="flex justify-center">
+        <Logo className="w-28" variant="alt" />
+      </div>
+
+      {step === "email" && (
+        <>
+          <h1 className="font text-black text-2xl font-semibold text-center">
+            Join The Mission <br /> or Sign in
+          </h1>
+          <p className="font text-[#64748B] text-center text-sm">
+            Start tracking your donation and <br /> follow the impact.
+          </p>
+
+          <div className="space-y-3">
+            <KingsChatButton />
+            <GoogleButton />
+          </div>
+
+          <p className="text-[#64748B] font text-center text-sm">
+            or continue with email
+          </p>
+
+          <div className="flex justify-center">
+            <div className="flex justify-center border-2 border-gray-300 w-fit py-2 md:px-5 px-3 rounded-lg gap-2 ">
+              <Icon
+                icon="tabler:mail-fast"
+                width="30"
+                height="30"
+                className="text-[#94A3B8]"
+              />
+              <input
+                type="email"
+                placeholder="Enter your Email"
+                className="text-sm"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="flex justify-center md:px-38 px-8">
+            <button
+              className="flex justify-center border border-transparent py-3 w-full rounded-3xl bg-[#0D7FC1] text-white font"
+              onClick={handleContinue}
+            >
+              Continue
+            </button>
+          </div>
+        </>
+      )}
+
+      {step === "otp" && (
+        <div className="md:hidden block space-y-6">
+          <h1 className="text-center font text-3xl font-semibold">
+            Confirmation Code
+          </h1>
+          <p className="text-center text-sm font text-[#64748B]">
+            Provide the 4-digit confirmation code sent <br />
+            <span className=" font">sent wedr-----343@gmail.com </span>
+          </p>
+
+          <div className="flex justify-center gap-3">
+            {otp.map((digit, index) => (
+              <input
+                key={index}
+                ref={(el) => {
+                  inputsRef.current[index] = el;
+                }}
+                type="text"
+                maxLength={1}
+                value={digit}
+                onChange={(e) => handleChange(e.target.value, index)}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+                className="w-12 h-12 text-center text-xl font-semibold border-2 border-gray-300 rounded-lg focus:border-[#0D7FC1] outline-none"
+              />
+            ))}
+          </div>
+
+          <div className="text-center space-y-2 space-x-1">
+            <button onClick={() => setStep("email")} className="text-sm font">
+              Didn&apos;t recieve mail?
+            </button>
+
+            <button className="text-sm font text-[#0D7FC1]">
+              Resend code ?
+            </button>
+          </div>
+
+          <div className="flex justify-center md:px-38 px-8">
+            <button
+              onClick={handleVerify}
+              className="flex justify-center font py-3 w-full rounded-3xl bg-[#0D7FC1] text-white"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      )}
+
+      <p className="text-xs md:px-35 px-10 font text-center">
+        By signing up, you’re agreeing to our{" "}
+        <Link href={"/"} className="underline text-[#0D7FC1] cursor-pointer">
+          Privacy Policy
+        </Link>{" "}
+        and{" "}
+        <Link href={"/"} className="underline text-[#0D7FC1] cursor-pointer">
+          Terms Of Use
+        </Link>
+      </p>
+    </div>
+  );
+}
