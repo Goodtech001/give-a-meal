@@ -50,7 +50,7 @@ function HeroSection() {
           <div className="container mx-auto pt-14">
             <div className="grid grid-cols-12  item-center">
               {/* img mobile */}
-              <div className="relative w-full flex items-center justify-center md:hidden col-span-12  md:col-span-6 mb-20 mt-30 pr-14 ">
+              <div className="relative w-full flex items-center justify-center md:hidden col-span-12  md:col-span-6 mb-20 mt-30 pr-19 ">
                 {images.map((img, index) => {
                   // Determine the "State" of this specific image
                   const isActive = index === activeIndex; // The Big One
@@ -64,7 +64,7 @@ function HeroSection() {
                       key={index}
                       className={`absolute transition-all duration-1000 ease-in-out overflow-visible 
               ${isActive ? "z-50 w-[280px] h-[280px] opacity-100 translate-x-0 scale-100" : ""}
-              ${isNext ? "z-40 w-[255px] h-[255px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 -top-20 -left-14.5 " : ""}
+              ${isNext ? "z-40 w-[255px] h-[255px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 -top-20 -left-19 " : ""}
         
               ${!isActive && !isNext && !isPrev ? "opacity-0 scale-0" : ""} 
             `}
