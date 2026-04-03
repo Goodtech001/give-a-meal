@@ -28,7 +28,7 @@ function ImpactHero() {
         transition={transitionSpring}
       >
         <div className="bg-impact bg-center bg- w-full mt-10 relative">
-          <div className="absolut top-0 text-center mt-30 space-y-4 mb-25">
+          <div className="absolut top-0 text-center md:mt-30 mt-15 space-y-4 mb-25">
             <h1 className="font text-6xl font-semibold text-[#00304C]">
               Pick A Cause. Feed A Life
             </h1>
