@@ -64,7 +64,7 @@ function HeroSection() {
                       key={index}
                       className={`absolute transition-all duration-1000 ease-in-out overflow-visible 
               ${isActive ? "z-50 w-[280px] h-[280px] opacity-100 translate-x-0 scale-100" : ""}
-              ${isNext ? "z-40 w-[255px] h-[255px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 -top-20 -left-19.5 " : ""}
+              ${isNext ? "z-40 w-[255px] h-[255px] opacity-80 translate-x-[180px] -translate-y-10 scale-90 -top-20 -left-18.5 " : ""}
         
               ${!isActive && !isNext && !isPrev ? "opacity-0 scale-0" : ""} 
             `}
