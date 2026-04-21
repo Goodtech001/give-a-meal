@@ -22,7 +22,7 @@ export const leftMenu: menu_type[] = [
 
   {
     title: "Partner With Us",
-    path: "/partner-with-us",
+    path: "/partners",
   },
   {
     title: "Who We Are",
